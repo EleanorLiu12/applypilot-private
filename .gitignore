@@ -1,0 +1,18 @@
+# This private repo stores the customized ApplyPilot workflow state.
+# Keep bulky/generated artifacts and application attachments out of git.
+.DS_Store
+materials/
+generated/
+screenshots/
+downloads/
+*.pdf
+*.docx
+*.rtf
+*.pages
+*.numbers
+*.xlsx
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.heic

@@ -1,0 +1,230 @@
+{
+  "metadata": {
+    "created_by": "ApplyPilot",
+    "created_at": "2026-07-14",
+    "status": "minimum_viable_setup",
+    "safe_to_apply": false,
+    "notes": "Do not use this profile for real applications until required fields are completed and the user confirms."
+  },
+  "candidate": {
+    "legal_name": "",
+    "preferred_name": "",
+    "email": "",
+    "phone": "",
+    "current_location": "",
+    "linkedin_url": "",
+    "portfolio_url": "",
+    "github_url": ""
+  },
+  "current_status": {
+    "current_role_or_framing": "",
+    "employment_status_answer": "",
+    "available_start_date": "",
+    "notice_period": ""
+  },
+  "work_authorization": {
+    "country": "United States",
+    "current_authorization": "F-1 student status; authorized to work in the United States through OPT and eligible for the 3-year STEM OPT extension.",
+    "requires_sponsorship": true,
+    "requires_sponsorship_now": null,
+    "requires_sponsorship_in_future": true,
+    "answer_exactly_as": "Authorized to work in the United States: Yes. Will require employer visa sponsorship now or in the future: Yes.",
+    "notes_for_unclear_forms": "If a form separates 'requires sponsorship now' from 'requires sponsorship in the future', ask the user before answering the 'now' question. If the form asks 'now or in the future', answer Yes."
+  },
+  "targets": {
+    "primary_role_families": [
+      "Software Engineering",
+      "AI Engineering",
+      "Product Management"
+    ],
+    "secondary_role_families": [],
+    "target_titles": [
+      "Software Development Engineer",
+      "Software Engineer",
+      "AI Engineer",
+      "Product Manager"
+    ],
+    "target_level": "New grad / early career",
+    "roles_to_avoid": [
+      "Forward Deployed Engineer",
+      "Forward Deploy Engineer"
+    ],
+    "companies_to_avoid": [
+      "Amazon",
+      "Visa"
+    ],
+    "target_industries": [],
+    "industries_to_avoid": [
+      "Space",
+      "Aerospace",
+      "Aircraft",
+      "Defense",
+      "Military",
+      "Roles requiring US security clearance",
+      "Roles requiring US citizenship",
+      "Roles requiring US person status"
+    ],
+    "job_types_to_avoid": [
+      "Part-time",
+      "Unpaid"
+    ],
+    "target_company_stage": [],
+    "target_locations": [
+      "California",
+      "Washington",
+      "New York City",
+      "Massachusetts",
+      "Illinois",
+      "Minnesota",
+      "Colorado",
+      "New Jersey",
+      "Virginia",
+      "Maryland",
+      "Oregon",
+      "Texas",
+      "Connecticut",
+      "Rhode Island",
+      "Delaware",
+      "New Mexico",
+      "Hawaii",
+      "Vermont",
+      "New Hampshire",
+      "Maine"
+    ],
+    "location_priority_tiers": {
+      "tier_1": [
+        "California: San Francisco Bay Area, San Jose, Palo Alto, Mountain View, Sunnyvale, Los Angeles, Irvine/Orange County, San Diego",
+        "Washington: Seattle, Bellevue, Redmond",
+        "New York: New York City",
+        "Massachusetts: Boston, Cambridge",
+        "Illinois: Chicago",
+        "Minnesota: Minneapolis, St. Paul",
+        "Texas: Austin, Dallas"
+      ],
+      "tier_2": [
+        "Colorado: Denver, Boulder",
+        "New Jersey: Jersey City, Hoboken, Newark",
+        "Virginia: Arlington, Alexandria, Northern Virginia",
+        "Maryland: Bethesda, Rockville, Baltimore",
+        "Oregon: Portland",
+        "Texas statewide: Fort Worth, Plano, Irving, Houston, San Antonio, Round Rock, Frisco, and other Texas locations"
+      ],
+      "tier_3": [
+        "Connecticut: Stamford, New Haven, Hartford",
+        "Rhode Island: Providence",
+        "Delaware: Wilmington",
+        "New Mexico: Albuquerque, Santa Fe",
+        "Hawaii: Honolulu",
+        "Vermont: Burlington",
+        "New Hampshire: Manchester, Nashua",
+        "Maine: Portland"
+      ]
+    },
+    "location_ranking_policy": "Prioritize CA, WA, NYC, Boston/Cambridge, Chicago, Minneapolis/St. Paul, Austin, and Dallas first; then strong tech hubs in other preferred states and Texas statewide; then remaining listed locations. Refresh location recommendations from public job-market signals during lead finding when web search is available.",
+    "remote_hybrid_onsite_preference": "Accept remote, hybrid, and onsite roles.",
+    "relocation_policy": "Target roles in listed preferred locations, with Tier 1 locations preferred. Texas is acceptable statewide. Ask before treating any other non-listed state as acceptable."
+  },
+  "compensation": {
+    "base_salary_range": "At least 120,000 USD per year",
+    "minimum_base_salary_usd_per_year": 120000,
+    "total_compensation_range": "",
+    "answer_strategy": "For lead screening, skip roles with explicitly listed annual base salary below 120,000 USD. If compensation is not listed or is ambiguous, do not skip solely for compensation. For application forms, defer when allowed; otherwise ask before entering a required compensation field.",
+    "notes": "User-provided minimum compensation filter for first trial."
+  },
+  "resume_files": [
+    {
+      "role_family": "Software Engineering",
+      "file_path": "/Users/kejunliu/Downloads/resume/Liu_Kejun_Resume_2026.md",
+      "upload_file_path": "/Users/kejunliu/Downloads/resume/Liu_Kejun_Resume_2026.pdf",
+      "editable_source_path": "/Users/kejunliu/Downloads/resume/Liu_Kejun_Resume_2026.docx",
+      "version": "2026",
+      "use_when": "Use for Software Development Engineer, Software Engineer, SDE, and SWE roles. Markdown is preferred for fit review; PDF is preferred for upload; DOCX is preferred for editable source."
+    },
+    {
+      "role_family": "AI Engineering",
+      "file_path": "/Users/kejunliu/Downloads/resume/Liu_Kejun_Resume_2026.md",
+      "upload_file_path": "/Users/kejunliu/Downloads/resume/Liu_Kejun_Resume_2026.pdf",
+      "editable_source_path": "/Users/kejunliu/Downloads/resume/Liu_Kejun_Resume_2026.docx",
+      "version": "2026",
+      "use_when": "Use for AI Engineer, ML Engineer, Applied AI Engineer, and related early-career technical roles. Markdown is preferred for fit review; PDF is preferred for upload; DOCX is preferred for editable source."
+    },
+    {
+      "role_family": "Product Management",
+      "file_path": "/Users/kejunliu/Downloads/resume/Liu_Kejun_Resume_2026.md",
+      "upload_file_path": "/Users/kejunliu/Downloads/resume/Liu_Kejun_Resume_2026.pdf",
+      "editable_source_path": "/Users/kejunliu/Downloads/resume/Liu_Kejun_Resume_2026.docx",
+      "version": "2026",
+      "use_when": "Use for Product Manager and Associate Product Manager roles until a dedicated PM resume variant exists."
+    }
+  ],
+  "supporting_materials": [],
+  "intended_sources": {
+    "linkedin": "LinkedIn Jobs",
+    "email_account": "",
+    "job_boards": [
+      "LinkedIn Jobs",
+      "Simplify Jobs",
+      "Wellfound",
+      "Y Combinator Work at a Startup",
+      "Otta / Welcome to the Jungle",
+      "Built In",
+      "Google Jobs",
+      "Indeed",
+      "Handshake"
+    ],
+    "direct_ats_sources": [
+      "Greenhouse",
+      "Lever",
+      "Ashby",
+      "Workday for high-fit roles only"
+    ],
+    "company_career_page_sources": [
+      "New grad / university / early career pages for target companies",
+      "AI startup career pages",
+      "Mid-size tech company career pages"
+    ],
+    "company_career_pages": true,
+    "external_fit_tools": [
+      "Simplify"
+    ],
+    "source_policy": "Use all listed sources for lead finding. For account-heavy or slow sources such as Workday and Handshake, collect leads only unless the user confirms access and later approves application-flow use."
+  },
+  "voluntary_self_identification": {
+    "strategy": "prefer_not_to_say",
+    "fill_automatically": false,
+    "gender": "",
+    "race_ethnicity": "",
+    "veteran_status": "",
+    "disability_status": "",
+    "notes": "Default to Prefer not to say / decline / leave blank when available unless the user explicitly wants exact answers stored in this private profile."
+  },
+  "custom_answer_policy": {
+    "draft_from_profile": true,
+    "require_user_confirmation_first_time": true,
+    "reuse_confirmed_patterns": true,
+    "stop_if_answer_introduces_new_claim": true
+  },
+  "minimum_required_before_applications": [
+    "target role families",
+    "target locations and remote/hybrid/onsite preference",
+    "work authorization country and status",
+    "sponsorship now and future",
+    "resume file path and role family",
+    "intended job boards/accounts",
+    "must-skip rules"
+  ],
+  "never_guess": [
+    "legal name",
+    "work authorization",
+    "sponsorship",
+    "employment status",
+    "salary expectations",
+    "relocation",
+    "degree dates",
+    "employment dates",
+    "voluntary self-identification",
+    "background check or non-compete questions",
+    "references",
+    "portfolio or work sample ownership"
+  ]
+}
