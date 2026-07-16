@@ -34,20 +34,31 @@
   "targets": {
     "primary_role_families": [
       "Software Engineering",
-      "AI Engineering",
-      "Product Management"
+      "AI Engineering"
     ],
     "secondary_role_families": [],
     "target_titles": [
       "Software Development Engineer",
       "Software Engineer",
-      "AI Engineer",
-      "Product Manager"
+      "AI Engineer"
     ],
-    "target_level": "New grad / early career",
+    "target_level": "New grad / entry-level / level I only",
     "roles_to_avoid": [
       "Forward Deployed Engineer",
-      "Forward Deploy Engineer"
+      "Forward Deploy Engineer",
+      "Job titles that explicitly say C++",
+      "Product Manager",
+      "Associate Product Manager",
+      "Product Management roles",
+      "Software Development Engineer II",
+      "Software Engineer II",
+      "SDE II",
+      "Level 2 engineering roles",
+      "Mid-level roles",
+      "Senior roles",
+      "Staff roles",
+      "Principal roles",
+      "Lead roles"
     ],
     "companies_to_avoid": [
       "Amazon",
@@ -147,14 +158,6 @@
       "editable_source_path": "/Users/kejunliu/Downloads/resume/Liu_Kejun_Resume_2026.docx",
       "version": "2026",
       "use_when": "Use for AI Engineer, ML Engineer, Applied AI Engineer, and related early-career technical roles. Markdown is preferred for fit review; PDF is preferred for upload; DOCX is preferred for editable source."
-    },
-    {
-      "role_family": "Product Management",
-      "file_path": "/Users/kejunliu/Downloads/resume/Liu_Kejun_Resume_2026.md",
-      "upload_file_path": "/Users/kejunliu/Downloads/resume/Liu_Kejun_Resume_2026.pdf",
-      "editable_source_path": "/Users/kejunliu/Downloads/resume/Liu_Kejun_Resume_2026.docx",
-      "version": "2026",
-      "use_when": "Use for Product Manager and Associate Product Manager roles until a dedicated PM resume variant exists."
     }
   ],
   "supporting_materials": [],

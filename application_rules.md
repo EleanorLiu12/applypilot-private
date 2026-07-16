@@ -25,9 +25,9 @@ Do not move beyond lead finding until these are complete in `candidate_profile.j
 
 Apply quickly when a job matches:
 
-- Role families: Software Engineering, AI Engineering, Product Management.
-- Titles: Software Development Engineer, Software Engineer, AI Engineer, Product Manager.
-- Level: New grad / early career.
+- Role families: Software Engineering and AI Engineering.
+- Titles: Software Development Engineer, Software Engineer, AI Engineer, ML Engineer, Applied AI Engineer, and closely related new-grad technical engineering titles.
+- Level: new grad, entry-level, level I, university graduate, new college grad, or junior only.
 - Freshness: posted in the last 24 hours first, then 48 hours if needed.
 - Locations: Tier 1 first: California tech hubs, Seattle/Bellevue/Redmond, New York City, Boston/Cambridge, Chicago, Minneapolis/St. Paul, Austin, and Dallas. Then Tier 2 preferred tech hubs including Texas statewide, then Tier 3 locations from the Location Policy section.
 - Remote/hybrid/onsite: accept all.
@@ -54,6 +54,9 @@ Default skip when:
 
 - The title, role family, or level violates the user's must-skip rules.
 - The role title is Forward Deployed Engineer or Forward Deploy Engineer.
+- The job title explicitly says "C++".
+- The role is Product Manager, Associate Product Manager, or any Product Management role.
+- The title or level indicates SDE II, Software Engineer II, Software Development Engineer II, level 2, mid-level, senior, staff, principal, lead, manager, architect, or other non-new-grad seniority.
 - The company is Amazon or Visa.
 - The required years of experience are clearly too high for the target level.
 - The posting conflicts with confirmed work authorization or sponsorship constraints.

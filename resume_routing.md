@@ -76,7 +76,6 @@ Fit labels:
 |---|---|---|---|---|
 | Software Engineering | /Users/kejunliu/Downloads/resume/Liu_Kejun_Resume_2026.md | Software Development Engineer; Software Engineer; SDE; SWE | TBD | Use PDF version for upload and DOCX for editable source. New grad / early career roles first. |
 | AI Engineering | /Users/kejunliu/Downloads/resume/Liu_Kejun_Resume_2026.md | AI Engineer; ML Engineer; Applied AI Engineer | TBD | Use PDF version for upload and DOCX for editable source. New grad / early career roles first. |
-| Product Management | /Users/kejunliu/Downloads/resume/Liu_Kejun_Resume_2026.md | Product Manager; Associate Product Manager; New Grad Product Manager | TBD | Use until a dedicated PM resume variant exists. |
 | AI Product / Growth | TBD | TBD | TBD | Secondary only if user adds it later. |
 | Product Marketing | TBD | TBD | TBD | Confirm before use. |
 | Data / Analytics | TBD | TBD | TBD | Confirm before use. |
