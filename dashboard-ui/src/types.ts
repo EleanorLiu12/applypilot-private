@@ -33,6 +33,17 @@ export type ApplicationLogEntry = {
   notes: string;
 };
 
+export type AppliedArchiveEntry = {
+  archived_at: string;
+  company: string;
+  job_title: string;
+  job_url: string;
+  applied_at: string;
+  source: string;
+  archive_reason: string;
+  notes: string;
+};
+
 export type DailyDashboardRow = {
   date: string;
   found_count: string;

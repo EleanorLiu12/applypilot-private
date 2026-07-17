@@ -76,9 +76,10 @@ async function readCsv(fileName) {
   return parseCsv(text);
 }
 
-const [jobPool, applicationLog, dailyDashboard, blockerQueue, followUp, automationRules, resumeRules] = await Promise.all([
+const [jobPool, applicationLog, appliedArchive, dailyDashboard, blockerQueue, followUp, automationRules, resumeRules] = await Promise.all([
   readCsv('job_pool.csv'),
   readCsv('application_log.csv'),
+  readCsv('applied_archive.csv'),
   readCsv('daily_dashboard.csv'),
   readCsv('blocker_queue.csv'),
   readCsv('follow_up.csv'),
@@ -90,6 +91,7 @@ const payload = {
   generatedAt: new Date().toISOString(),
   jobPool,
   applicationLog,
+  appliedArchive,
   dailyDashboard,
   blockerQueue,
   followUp,
@@ -104,4 +106,4 @@ await writeFile(
   'utf8',
 );
 
-console.log(`Synced ${jobPool.length} job rows and ${applicationLog.length} application rows.`);
+console.log(`Synced ${jobPool.length} job rows, ${applicationLog.length} application rows, and ${appliedArchive.length} archived rows.`);

@@ -92,6 +92,36 @@ npm run preview
 
 The dashboard data is generated from `dashboard/*.csv`. `npm run dev` and `npm run build` both refresh `dashboard-ui/src/data/dashboardData.ts` before serving or building the page.
 
+## Schedule Lead Search Locally
+
+A local cron job can run a lead-finding-only search through the Codex CLI. This is intentionally limited to finding and classifying leads; it must not open application flows, log in, answer forms, or submit applications.
+
+Run a manual check first:
+
+```bash
+scripts/run-lead-search.sh
+```
+
+Install the default weekday 2:00 PM Pacific Time cron entry:
+
+```bash
+scripts/install-job-search-cron.sh
+```
+
+Use a custom cron schedule by passing it as one quoted argument:
+
+```bash
+scripts/install-job-search-cron.sh "0 9 * * 1,3,5"
+```
+
+Remove the scheduled job:
+
+```bash
+scripts/uninstall-job-search-cron.sh
+```
+
+Cron uses the Mac's local timezone; on this machine, the default `0 14 * * 1-5` schedule runs at 2:00 PM Pacific Time on weekdays. Logs are written to `logs/job-search/`, which is ignored by git. The runner aborts if dashboard data files already have uncommitted changes, so it does not overwrite an unresolved prior search.
+
 ## Start Prompts
 
 Copy one of these into Codex:

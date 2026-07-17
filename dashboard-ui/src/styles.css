@@ -343,6 +343,42 @@ h1 {
   justify-content: space-between;
   gap: 12px;
   margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.view-toggle {
+  display: inline-flex;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  box-shadow: var(--shadow);
+}
+
+.view-toggle button {
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 10px;
+  border: 0;
+  border-right: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+}
+
+.view-toggle button:last-child {
+  border-right: 0;
+}
+
+.view-toggle button:hover {
+  background: var(--surface-3);
+}
+
+.view-toggle button.is-active {
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 600;
 }
 
 .job-list {
@@ -406,6 +442,12 @@ h1 {
   color: var(--success) !important;
   background: var(--success-soft) !important;
   border-color: color-mix(in srgb, var(--success) 35%, transparent) !important;
+}
+
+.archive-chip {
+  color: var(--accent) !important;
+  background: var(--accent-soft) !important;
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent) !important;
 }
 
 .priority-high {

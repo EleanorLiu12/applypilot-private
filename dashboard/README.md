@@ -7,6 +7,7 @@ These CSV files are the workflow memory. They can be edited directly or imported
 - `daily_dashboard.csv`: daily totals, sources, summary, and user actions needed.
 - `job_pool.csv`: all found jobs, prioritization, current status, selected resume, and next action.
 - `application_log.csv`: audit trail for real application attempts only.
+- `applied_archive.csv`: applied jobs that should stay out of the active lead queue.
 - `blocker_queue.csv`: blockers, root cause, retry strategy, and user handoff.
 - `follow_up.csv`: recruiter replies, interviews, rejections, and follow-up tasks.
 - `resume_rules.csv`: role-to-resume mapping and tailoring threshold.

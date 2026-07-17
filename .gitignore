@@ -5,6 +5,7 @@ materials/
 generated/
 screenshots/
 downloads/
+logs/
 dashboard-ui/.vite/
 dashboard-ui/dist/
 dashboard-ui/node_modules/
