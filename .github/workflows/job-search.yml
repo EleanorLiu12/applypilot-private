@@ -1,0 +1,33 @@
+name: Job Search
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Search mode
+        required: true
+        default: lead-finding-only
+        type: choice
+        options:
+          - lead-finding-only
+      notes:
+        description: Optional search notes
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  handoff:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Record search request
+        run: |
+          echo "ApplyPilot search requested."
+          echo "Mode: ${{ inputs.mode }}"
+          echo "Notes: ${{ inputs.notes }}"
+          echo "This repository currently uses the Codex ApplyPilot agent for lead finding. Run the agent search, commit dashboard CSV updates, then Dashboard Pages will publish the refreshed data."

@@ -5,6 +5,9 @@ materials/
 generated/
 screenshots/
 downloads/
+dashboard-ui/.vite/
+dashboard-ui/dist/
+dashboard-ui/node_modules/
 *.pdf
 *.docx
 *.rtf
