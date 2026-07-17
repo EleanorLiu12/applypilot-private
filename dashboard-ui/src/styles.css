@@ -438,10 +438,16 @@ h1 {
   cursor: default;
 }
 
+.applied-toggle,
 .applied-toggle.is-applied {
   color: var(--success) !important;
   background: var(--success-soft) !important;
   border-color: color-mix(in srgb, var(--success) 35%, transparent) !important;
+}
+
+.applied-toggle:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--success) 55%, transparent) !important;
+  background: color-mix(in srgb, var(--success-soft) 80%, var(--surface)) !important;
 }
 
 .archive-chip {

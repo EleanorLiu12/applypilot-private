@@ -171,10 +171,11 @@
   ],
   "supporting_materials": [],
   "intended_sources": {
-    "linkedin": "LinkedIn Jobs",
+    "linkedin": "LinkedIn Jobs and LinkedIn Premium personal search",
     "email_account": "",
     "job_boards": [
       "LinkedIn Jobs",
+      "LinkedIn Premium personal search",
       "Simplify Jobs",
       "Wellfound",
       "Y Combinator Work at a Startup",
@@ -199,7 +200,7 @@
     "external_fit_tools": [
       "Simplify"
     ],
-    "source_policy": "Use all listed sources for lead finding. For account-heavy or slow sources such as Workday and Handshake, collect leads only unless the user confirms access and later approves application-flow use."
+    "source_policy": "Use all listed sources for lead finding. LinkedIn Premium personal search is allowed only through an already-authenticated user session or user-provided/exported lead data; do not ask for credentials, bypass login/2FA/CAPTCHA, or open application flows. For account-heavy or slow sources such as Workday and Handshake, collect leads only unless the user confirms access and later approves application-flow use."
   },
   "voluntary_self_identification": {
     "strategy": "prefer_not_to_say",
