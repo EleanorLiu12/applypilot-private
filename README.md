@@ -67,6 +67,31 @@ git pull
 
 If you copied the folder manually, replace your local `~/.codex/skills/applypilot` folder with the latest version from GitHub.
 
+## Run The Web Dashboard Locally
+
+Keep this repository private if it contains personal job-search data. GitHub Pages on the free plan may require a public repository, so the safest no-cost option is to run the dashboard on your own machine.
+
+From the repository root:
+
+```bash
+cd dashboard-ui
+npm install
+npm run dev
+```
+
+Vite will print a local URL such as `http://127.0.0.1:5173/`. Open that URL in your browser to use the dashboard.
+
+For a production-style local preview:
+
+```bash
+cd dashboard-ui
+npm install
+npm run build
+npm run preview
+```
+
+The dashboard data is generated from `dashboard/*.csv`. `npm run dev` and `npm run build` both refresh `dashboard-ui/src/data/dashboardData.ts` before serving or building the page.
+
 ## Start Prompts
 
 Copy one of these into Codex:
