@@ -261,7 +261,7 @@ export function App() {
         <section className="content-grid">
           <div className="jobs-panel">
             <div className="section-heading">
-              <div><h2>Jobs</h2></div>
+              <div><h2>Jobs</h2><p>{formatCount(filteredJobs.length)} jobs match the current filters</p></div>
               <div className="view-toggle" role="tablist" aria-label="Job queue view">
                 <button className={archiveMode === 'active' ? 'is-active' : ''} type="button" onClick={() => setArchiveMode('active')}><Inbox size={16} />Active</button>
                 <button className={archiveMode === 'archive' ? 'is-active' : ''} type="button" onClick={() => setArchiveMode('archive')}><Archive size={16} />Archive</button>
