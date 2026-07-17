@@ -156,11 +156,11 @@ Use these accounts only:
 - LinkedIn: LinkedIn Jobs and LinkedIn Premium personal search.
 - Email: TBD.
 - Job boards: LinkedIn Jobs, LinkedIn Premium personal search, Simplify Jobs, Wellfound, Y Combinator Work at a Startup, Otta / Welcome to the Jungle, Built In, Google Jobs, Indeed, Handshake.
-- Direct ATS sources: Greenhouse, Lever, Ashby, and Workday for high-fit roles only.
+- Direct ATS sources: Greenhouse, Lever, public Ashby hosted job boards/posting pages, and Workday for high-fit roles only.
 - Company pages: new grad / university / early career pages for target companies, AI startup career pages, and mid-size tech company career pages.
 
 If a different account appears, stop and ask.
 
 ## Source Policy
 
-For the first lead-finding trial, use all listed sources to find and classify leads. Do not open real application flows, click Apply, create accounts, log in, or submit applications. For LinkedIn Premium personal search, use only an already-authenticated user session or user-provided/exported lead data; stop for login, 2FA, CAPTCHA, account switching, or any prompt requiring user action. For account-heavy or slower sources such as Workday and Handshake, collect public leads only unless the user confirms access and later approves application-flow use.
+For lead finding, use all listed sources to find and classify leads, including public Ashby hosted job boards and Ashby posting pages when available. Do not open real application flows, click Apply, create accounts, log in, or submit applications. For LinkedIn Premium personal search, use only an already-authenticated user session or user-provided/exported lead data; stop for login, 2FA, CAPTCHA, account switching, or any prompt requiring user action. For account-heavy or slower sources such as Workday and Handshake, collect public leads only unless the user confirms access and later approves application-flow use.

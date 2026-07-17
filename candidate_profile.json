@@ -201,7 +201,7 @@
     "external_fit_tools": [
       "Simplify"
     ],
-    "source_policy": "Use all listed sources for lead finding. LinkedIn Premium personal search is allowed only through an already-authenticated user session or user-provided/exported lead data; do not ask for credentials, bypass login/2FA/CAPTCHA, or open application flows. For account-heavy or slow sources such as Workday and Handshake, collect leads only unless the user confirms access and later approves application-flow use."
+    "source_policy": "Use all listed sources for lead finding, including public Ashby hosted job boards and Ashby posting pages when available. LinkedIn Premium personal search is allowed only through an already-authenticated user session or user-provided/exported lead data; do not ask for credentials, bypass login/2FA/CAPTCHA, or open application flows. For account-heavy or slow sources such as Workday and Handshake, collect leads only unless the user confirms access and later approves application-flow use."
   },
   "voluntary_self_identification": {
     "strategy": "prefer_not_to_say",
