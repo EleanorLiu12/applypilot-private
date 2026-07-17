@@ -153,6 +153,14 @@ function formatCount(value: number) {
   return new Intl.NumberFormat('en-US').format(value);
 }
 
+function cleanCardNote(note: string) {
+  return note
+    .replace(/^(Fresh\s+)?\d+d\s+lead\.\s*/i, '')
+    .replace(/^Fresh\s+(LinkedIn|Built In|Simplify|Google|YC|Handshake)\s+lead\.\s*/i, '')
+    .replace(/^Built In\s+entry-level\s+listing\.\s*/i, '')
+    .trim();
+}
+
 function SelectControl({ label, value, options, onChange }: { label: string; value: string; options: string[]; onChange: (value: string) => void }) {
   const optionLabel = (option: string) => option === 'Applied' ? 'Archived' : option === 'Not applied' ? 'Archive' : option;
 
@@ -177,7 +185,6 @@ function JobCard({ job, applied, onAppliedChange }: { job: JobLead; applied: boo
       <div className="job-main">
         <div>
           <div className="job-eyebrow">
-            <span className={`priority priority-${job.priority.toLowerCase()}`}>{job.priority || 'Unranked'}</span>
             <button
               className={`chip-button applied-toggle${applied ? ' is-applied' : ''}`}
               type="button"
@@ -197,7 +204,7 @@ function JobCard({ job, applied, onAppliedChange }: { job: JobLead; applied: boo
       <div className="job-meta">
         {metaItems.map((item) => <span key={item}>{item}</span>)}
       </div>
-      {(job.notes || job.skip_reason || job.blocker) && <p className="job-note">{job.skip_reason || job.blocker || job.notes}</p>}
+      {(job.notes || job.skip_reason || job.blocker) && <p className="job-note">{cleanCardNote(job.skip_reason || job.blocker || job.notes)}</p>}
       <div className="job-footer"><span>{job.source}</span>{job.next_action && <span>{job.next_action}</span>}</div>
     </article>
   );
