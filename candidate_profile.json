@@ -22,6 +22,10 @@
     "available_start_date": "",
     "notice_period": ""
   },
+  "education": {
+    "graduation_window": "December 2026 through May 2027",
+    "graduation_window_policy": "For lead screening, keep postings that accept graduation dates between December 2026 and May 2027. If no graduation-window requirement is listed, do not skip solely for missing graduation wording. If a posting explicitly requires a graduation date outside this window, skip it. Ask before answering forms that require an exact graduation month or date."
+  },
   "work_authorization": {
     "country": "United States",
     "current_authorization": "F-1 student status; authorized to work in the United States through OPT and eligible for the 3-year STEM OPT extension.",
@@ -40,7 +44,12 @@
     "target_titles": [
       "Software Development Engineer",
       "Software Engineer",
-      "AI Engineer"
+      "AI Engineer",
+      "Machine Learning Engineer",
+      "Applied AI Engineer",
+      "AI/ML Software Engineer",
+      "LLM Engineer",
+      "Agentic AI Engineer"
     ],
     "target_level": "New grad / entry-level / level I only",
     "roles_to_avoid": [

@@ -26,8 +26,9 @@ Do not move beyond lead finding until these are complete in `candidate_profile.j
 Apply quickly when a job matches:
 
 - Role families: Software Engineering and AI Engineering.
-- Titles: Software Development Engineer, Software Engineer, AI Engineer, ML Engineer, Applied AI Engineer, and closely related new-grad technical engineering titles.
+- Titles: Software Development Engineer, Software Engineer, AI Engineer, ML Engineer, Machine Learning Engineer, Applied AI Engineer, AI/ML Software Engineer, LLM Engineer, Agentic AI Engineer, and closely related new-grad technical engineering titles.
 - Level: new grad, entry-level, level I, university graduate, new college grad, or junior only.
+- Graduation window: target postings that accept graduation dates from December 2026 through May 2027. If no graduation-window requirement is listed, do not skip solely for missing graduation wording.
 - Freshness: posted in the last 24 hours first, then 48 hours if needed.
 - Locations: Tier 1 first: California tech hubs, Seattle/Bellevue/Redmond, New York City, Boston/Cambridge, Chicago, Minneapolis/St. Paul, Austin, and Dallas. Then Tier 2 preferred tech hubs including Texas statewide, then Tier 3 locations from the Location Policy section.
 - Remote/hybrid/onsite: accept all.
@@ -57,6 +58,7 @@ Default skip when:
 - The job title explicitly says "C++".
 - The role is Product Manager, Associate Product Manager, or any Product Management role.
 - The title or level indicates SDE II, Software Engineer II, Software Development Engineer II, level 2, mid-level, senior, staff, principal, lead, manager, architect, or other non-new-grad seniority.
+- The posting explicitly requires a graduation date outside December 2026 through May 2027.
 - The company is Amazon or Visa.
 - The required years of experience are clearly too high for the target level.
 - The posting conflicts with confirmed work authorization or sponsorship constraints.
@@ -75,6 +77,7 @@ Default skip when:
 Stop and ask the user when:
 
 - Legal, identity, work authorization, sponsorship, or compensation wording is unclear.
+- A form requires an exact graduation month or date instead of accepting the confirmed December 2026 through May 2027 window.
 - A posting's sponsorship, authorization, relocation, or compensation requirement conflicts with a `TBD` profile field.
 - A form asks only whether sponsorship is required "now" and does not also ask about future sponsorship.
 - A compensation field requires a number or range and does not allow deferral.

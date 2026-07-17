@@ -154,19 +154,21 @@ function formatCount(value: number) {
 }
 
 function SelectControl({ label, value, options, onChange }: { label: string; value: string; options: string[]; onChange: (value: string) => void }) {
+  const optionLabel = (option: string) => option === 'Applied' ? 'Archived' : option === 'Not applied' ? 'Archive' : option;
+
   return (
     <label className="field">
       <span>{label}</span>
       <select value={value} onChange={(event) => onChange(event.target.value)}>
         {options.map((option) => (
-          <option key={option} value={option}>{option}</option>
+          <option key={option} value={option}>{optionLabel(option)}</option>
         ))}
       </select>
     </label>
   );
 }
 
-function JobCard({ job, applied, archived, onAppliedChange }: { job: JobLead; applied: boolean; archived: boolean; onAppliedChange: (applied: boolean) => void }) {
+function JobCard({ job, applied, onAppliedChange }: { job: JobLead; applied: boolean; onAppliedChange: (applied: boolean) => void }) {
   const appliedLocked = job.status === 'Submitted';
   const metaItems = [compactLocation(job.location), job.role_family, job.level, job.remote_policy, job.posted_date ? `Posted ${job.posted_date}` : '']
     .filter((item) => item && item !== 'Unspecified');
@@ -182,11 +184,10 @@ function JobCard({ job, applied, archived, onAppliedChange }: { job: JobLead; ap
               aria-pressed={applied}
               disabled={appliedLocked}
               onClick={() => onAppliedChange(!applied)}
-              title={appliedLocked ? 'Submitted jobs are marked from the application log' : 'Toggle applied status'}
+              title={appliedLocked ? 'Submitted jobs are marked from the application log' : applied ? 'Move back to active jobs' : 'Move to archive'}
             >
-              {applied ? 'Applied' : 'Not applied'}
+              {applied ? 'Archived' : 'Archive'}
             </button>
-            {archived && <span className="archive-chip">Archived</span>}
           </div>
           <h3>{job.job_title}</h3>
           <p>{job.company}</p>
@@ -197,7 +198,7 @@ function JobCard({ job, applied, archived, onAppliedChange }: { job: JobLead; ap
         {metaItems.map((item) => <span key={item}>{item}</span>)}
       </div>
       {(job.notes || job.skip_reason || job.blocker) && <p className="job-note">{job.skip_reason || job.blocker || job.notes}</p>}
-      <div className="job-footer"><span>{job.source}</span><span>{job.next_action || 'Review'}</span></div>
+      <div className="job-footer"><span>{job.source}</span>{job.next_action && <span>{job.next_action}</span>}</div>
     </article>
   );
 }
@@ -260,7 +261,7 @@ export function App() {
               </div>
             </div>
             <div className="job-list">
-              {filteredJobs.length > 0 ? filteredJobs.map((job) => <JobCard key={`${job.company}-${job.job_title}-${job.job_url}`} job={job} applied={isApplied(job, appliedOverrides)} archived={isArchived(job, appliedOverrides)} onAppliedChange={(applied) => setJobApplied(job, applied)} />) : <div className="empty-state"><ShieldAlert size={28} /><h3>No jobs match this view</h3><p>{archiveMode === 'archive' ? 'Mark jobs as applied to move them into the archive.' : 'Loosen one filter or reset to the default pending, not-applied view.'}</p></div>}
+              {filteredJobs.length > 0 ? filteredJobs.map((job) => <JobCard key={`${job.company}-${job.job_title}-${job.job_url}`} job={job} applied={isApplied(job, appliedOverrides)} onAppliedChange={(applied) => setJobApplied(job, applied)} />) : <div className="empty-state"><ShieldAlert size={28} /><h3>No jobs match this view</h3><p>{archiveMode === 'archive' ? 'Mark jobs to move them into the archive.' : 'Loosen one filter or reset the active view.'}</p></div>}
             </div>
           </div>
           <aside className="right-stack">
@@ -271,7 +272,7 @@ export function App() {
           <label className="sort-field"><ArrowDownUp size={18} /><select value={sortKey} onChange={(event) => setSortKey(event.target.value as SortKey)}><option value="date_found">Sort by found date</option><option value="posted_date">Sort by posted date</option><option value="priority">Sort by priority</option><option value="status">Sort by status</option><option value="company">Sort by company</option></select></label>
           </div>
           <div className="filter-grid">
-          <SelectControl label="Applied" value={filters.applied} options={getOptions('applied', filters, appliedOverrides, archiveMode)} onChange={(value) => updateFilter('applied', value)} />
+          <SelectControl label="Archive" value={filters.applied} options={getOptions('applied', filters, appliedOverrides, archiveMode)} onChange={(value) => updateFilter('applied', value)} />
           <SelectControl label="Priority" value={filters.priority} options={getOptions('priority', filters, appliedOverrides, archiveMode)} onChange={(value) => updateFilter('priority', value)} />
           <SelectControl label="Role" value={filters.roleFamily} options={getOptions('roleFamily', filters, appliedOverrides, archiveMode)} onChange={(value) => updateFilter('roleFamily', value)} />
           <SelectControl label="Level" value={filters.level} options={getOptions('level', filters, appliedOverrides, archiveMode)} onChange={(value) => updateFilter('level', value)} />
@@ -284,7 +285,7 @@ export function App() {
           </aside>
         </section>
       </main>
-      <footer><span><CalendarDays size={16} />Data generated {new Date(dashboardData.generatedAt).toLocaleString()}</span><span><CheckCircle2 size={16} />Application log rows: {applications.length}</span></footer>
+      <footer><span><CalendarDays size={16} />Data generated {new Date(dashboardData.generatedAt).toLocaleString()}</span><span><CheckCircle2 size={16} />Submission log rows: {applications.length}</span></footer>
     </div>
   );
 }
