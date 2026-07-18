@@ -57,6 +57,7 @@ Default skip when:
 - The title, role family, or level violates the user's must-skip rules.
 - The role title is Forward Deployed Engineer or Forward Deploy Engineer.
 - The job title explicitly says "C++".
+- The job title includes "PhD".
 - The role is Product Manager, Associate Product Manager, or any Product Management role.
 - The title or level indicates SDE II, Software Engineer II, Software Development Engineer II, level 2, mid-level, senior, staff, principal, lead, manager, architect, or other non-new-grad seniority.
 - The posting explicitly requires a graduation date outside December 2026 through May 2027.
