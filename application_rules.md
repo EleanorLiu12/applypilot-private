@@ -61,7 +61,7 @@ Default skip when:
 - The role is Product Manager, Associate Product Manager, or any Product Management role.
 - The title or level indicates SDE II, Software Engineer II, Software Development Engineer II, level 2, mid-level, senior, staff, principal, lead, manager, architect, or other non-new-grad seniority.
 - The posting explicitly requires a graduation date outside December 2026 through May 2027.
-- The company is Amazon, Visa, or listed only as Stealth Startup.
+- The company is Amazon, Visa, CGI, BeaconFire, Hired, or listed only as Stealth Startup.
 - The required years of experience are clearly too high for the target level.
 - The posting conflicts with confirmed work authorization or sponsorship constraints.
 - The posting says the employer cannot sponsor now or in the future, does not accept OPT/STEM OPT, or requires permanent unrestricted US work authorization.

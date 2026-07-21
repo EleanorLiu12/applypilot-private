@@ -20,3 +20,10 @@ npm run preview
 The workflow in `.github/workflows/dashboard-pages.yml` builds this app and deploys `dashboard-ui/dist`.
 
 Use GitHub Pages only if private Pages access is available for this private repository. On free GitHub plans, keep the repository private and run the dashboard locally instead of publishing personal job-search data.
+
+
+## Archive write-back
+
+Run the dashboard with `npm run dev` when you want Archive button changes to persist. The local Vite server exposes a write-back endpoint that updates `../dashboard/applied_archive.csv`, updates the matching `archived` flag in `../dashboard/job_pool.csv`, and regenerates `src/data/dashboardData.ts`.
+
+A purely static page, including GitHub Pages or opening `dist/index.html` directly, cannot write to local CSV files. In that mode the Archive button will show a write-back error instead of silently saving only in browser storage.

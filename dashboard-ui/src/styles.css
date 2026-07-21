@@ -146,6 +146,19 @@ h1 {
   justify-content: flex-end;
 }
 
+.writeback-alert {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 18px;
+  padding: 12px 14px;
+  border: 1px solid color-mix(in srgb, var(--danger) 35%, transparent);
+  border-radius: var(--radius);
+  background: var(--danger-soft);
+  color: var(--danger);
+  line-height: 1.4;
+}
+
 .ghost-button,
 .icon-link {
   border: 1px solid var(--border);

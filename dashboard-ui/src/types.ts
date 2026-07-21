@@ -16,6 +16,7 @@ export type JobLead = {
   blocker: string;
   next_action: string;
   notes: string;
+  archived?: string;
 };
 
 export type ApplicationLogEntry = {

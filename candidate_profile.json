@@ -73,7 +73,10 @@
     "companies_to_avoid": [
       "Amazon",
       "Visa",
-      "Stealth Startup"
+      "Stealth Startup",
+      "CGI",
+      "BeaconFire",
+      "Hired"
     ],
     "target_industries": [],
     "industries_to_avoid": [
