@@ -27,3 +27,4 @@ date,rule_category,rule,reason,source_blocker_or_lesson,status
 2026-07-19,screening,Do not include postings from CGI in future searches.,User requested excluding CGI from the job search workflow.,user-preference-update,active
 2026-07-20,screening,Do not include postings from BeaconFire in future searches.,User requested excluding BeaconFire from the job search workflow.,user-preference-update,active
 2026-07-20,screening,Do not include postings from Hired in future searches.,User requested excluding Hired from the job search workflow.,user-preference-update,active
+2026-07-24,screening,Do not include postings from Cerebras Systems or Cerebras in future searches.,User requested excluding Cerebras Systems because its roles require US clearance.,user-preference-update,active

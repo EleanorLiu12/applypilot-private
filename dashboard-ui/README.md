@@ -10,10 +10,12 @@ The UI uses GitHub Primer-style light and dark color tokens.
 npm install
 npm run dev
 npm run build
+npm run check
 npm run preview
 ```
 
 `npm run sync-data` reads `../dashboard/*.csv` and regenerates `src/data/dashboardData.ts`.
+`npm run check` builds the UI and verifies that the local Archive write-back endpoint is attached. Run it after UI changes that affect dashboard behavior or Vite server wiring.
 
 ## GitHub Pages
 
