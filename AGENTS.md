@@ -21,7 +21,8 @@ This file is for any coding agent that receives the GitHub repo directly. Codex 
 - Do not guess legal, identity, work authorization, sponsorship, compensation, current employment, or relocation facts.
 - Count only confirmed submissions.
 - Stop for CAPTCHA, Cloudflare, login/2FA, unclear sensitive questions, missing materials, and permission prompts.
-- Treat dashboard UI write-backs as source-of-truth workflow state. Before each fetch or application review, read the current `dashboard/*.csv` files and preserve user/manual archive changes, especially `job_pool.csv` `archived` flags and `applied_archive.csv` rows.
+- Treat dashboard UI write-backs as source-of-truth workflow state. Any future dashboard change made in the UI must be written back to the backend CSVs before the task is considered complete; do not leave workflow changes only in browser or frontend state.
+- Before each fetch or application review, read the current `dashboard/*.csv` files and preserve user/manual archive changes, especially `job_pool.csv` `archived` flags and `applied_archive.csv` rows.
 - After dashboard UI or Vite server wiring changes, run `npm --prefix dashboard-ui run check` to verify the build and the local Archive write-back endpoint.
 
 ## User-Owned Outputs

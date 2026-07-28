@@ -76,6 +76,8 @@ Every job lead or attempt must end in one of these states:
 
 Count only confirmed submissions. Saved jobs, trackers, autofill badges, or "quick apply" labels do not count.
 
+Any future dashboard change made in the UI must be written back to the backend CSVs before the task is considered complete. Do not treat browser-only or frontend-only dashboard state as durable workflow state.
+
 For a first trial or demo run, default to lead finding only: find, screen, classify, and update the dashboard without opening real application flows or submitting anything. In lead-finding-only runs, update `job_pool`, `daily_dashboard`, `blocker_queue`, and `automation_rules` as needed; leave `application_log` empty because no application attempt occurred.
 
 ### 6. Learn From Blockers
