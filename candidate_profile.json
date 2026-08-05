@@ -80,6 +80,16 @@
       "Cerebras Systems",
       "Cerebras"
     ],
+    "temporary_companies_to_avoid": [
+      {
+        "companies": [
+          "TikTok",
+          "ByteDance"
+        ],
+        "until": "2027-01-01",
+        "reason": "User requested excluding TikTok and ByteDance from lead finding and application review until 2027-01-01."
+      }
+    ],
     "target_industries": [],
     "industries_to_avoid": [
       "Space",
