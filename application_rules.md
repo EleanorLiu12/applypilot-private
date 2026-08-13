@@ -61,7 +61,7 @@ Default skip when:
 - The role is Product Manager, Associate Product Manager, or any Product Management role.
 - The title or level indicates SDE II, Software Engineer II, Software Development Engineer II, level 2, mid-level, senior, staff, principal, lead, manager, architect, or other non-new-grad seniority.
 - The posting explicitly requires a graduation date outside December 2026 through May 2027.
-- The company is Amazon, Visa, CGI, BeaconFire, Hired, Cerebras Systems, Cerebras, or listed only as Stealth Startup.
+- The company is Amazon, Visa, CGI, BeaconFire, Hired, Cerebras Systems, Cerebras, T-Mobile, or listed only as Stealth Startup.
 - Until 2027-01-01, the company is TikTok or ByteDance.
 - The required years of experience are clearly too high for the target level.
 - The posting conflicts with confirmed work authorization or sponsorship constraints.
