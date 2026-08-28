@@ -34,7 +34,7 @@ Apply quickly when a job matches:
 - Remote/hybrid/onsite: accept all.
 - Company types: TBD.
 - Industries: TBD.
-- Compensation: at least 120,000 USD per year when salary is explicitly listed.
+- Compensation: at least 90,000 USD per year when salary is explicitly listed. Confirmed by the user on 2026-08-28, replacing the previous 120,000 USD floor.
 - Work authorization: must support US work authorization under F-1 OPT/STEM OPT and future employer sponsorship.
 - Form length: low-friction forms in Volume mode.
 
@@ -61,7 +61,7 @@ Default skip when:
 - The role is Product Manager, Associate Product Manager, or any Product Management role.
 - The title or level indicates SDE II, Software Engineer II, Software Development Engineer II, level 2, mid-level, senior, staff, principal, lead, manager, architect, or other non-new-grad seniority.
 - The posting explicitly requires a graduation date outside December 2026 through May 2027.
-- The company is Amazon, Visa, CGI, BeaconFire, Hired, Cerebras Systems, Cerebras, T-Mobile, Roblox, CVS Health, Bot Auto, Cisco, Warner Bros. Discovery (including Warner Bros., Warner Bros. Games, HBO, HBO Max, CNN, and Discovery), or listed only as Stealth Startup.
+- The company is Amazon, Visa, CGI, BeaconFire, Hired, Cerebras Systems, Cerebras, T-Mobile, Roblox, CVS Health, Bot Auto, Cisco, InstaLILY AI (also written InstaLILY and InstaLily), Warner Bros. Discovery (including Warner Bros., Warner Bros. Games, HBO, HBO Max, CNN, and Discovery), or listed only as Stealth Startup.
 - Until 2027-01-01, the company is TikTok or ByteDance.
 - The required years of experience are clearly too high for the target level.
 - The posting conflicts with confirmed work authorization or sponsorship constraints.
@@ -70,7 +70,7 @@ Default skip when:
 - The role is in space, aerospace, aircraft, defense, military, or security-clearance-related work.
 - The role requires US security clearance.
 - The location conflicts with confirmed location or relocation policy.
-- The explicitly listed annual base salary is below 120,000 USD.
+- The entire explicitly listed annual base salary range sits below 90,000 USD. A range that straddles 90,000 USD is not a skip.
 - The role is part-time, unpaid, contract, agency, internship, or commission-only unless explicitly allowed.
 - The form requires video, extensive writing samples, references, or unsupported materials for a weak-fit role.
 - The job is a duplicate, already applied, closed, or stale without exceptional fit.

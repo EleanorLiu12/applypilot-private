@@ -89,7 +89,9 @@
       "HBO Max",
       "CNN",
       "Discovery",
-      "Cisco"
+      "Cisco",
+      "InstaLILY AI",
+      "InstaLILY"
     ],
     "temporary_companies_to_avoid": [
       {
@@ -173,11 +175,11 @@
     "relocation_policy": "Target roles in listed preferred locations, with Tier 1 locations preferred. Texas is acceptable statewide. Ask before treating any other non-listed state as acceptable."
   },
   "compensation": {
-    "base_salary_range": "At least 120,000 USD per year",
-    "minimum_base_salary_usd_per_year": 120000,
+    "base_salary_range": "At least 90,000 USD per year",
+    "minimum_base_salary_usd_per_year": 90000,
     "total_compensation_range": "",
-    "answer_strategy": "For lead screening, skip roles with explicitly listed annual base salary below 120,000 USD. If compensation is not listed or is ambiguous, do not skip solely for compensation. For application forms, defer when allowed; otherwise ask before entering a required compensation field.",
-    "notes": "User-provided minimum compensation filter for first trial."
+    "answer_strategy": "For lead screening, skip a role only when its entire explicitly listed annual base salary range sits below 90,000 USD; a range that straddles 90,000 USD is acceptable. If compensation is not listed or is ambiguous, do not skip solely for compensation. For application forms, defer when allowed; otherwise ask before entering a required compensation field.",
+    "notes": "User set the floor at 90,000 USD on 2026-08-28, replacing the 120,000 USD floor used from 2026-07-14. This settled the straddling-salary question that had been open since 2026-08-18."
   },
   "resume_files": [
     {
