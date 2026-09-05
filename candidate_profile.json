@@ -275,7 +275,7 @@
   ],
   "china_track": {
     "added": "2026-09-05",
-    "status": "scaffolded_not_yet_run",
+    "status": "configured_not_yet_run",
     "rules_file": "china_application_rules.md",
     "dashboard_path": "dashboard/china/",
     "scope": "Roles based in mainland China at 外企 (foreign-invested multinationals with China offices). Chinese domestic companies are out of scope unless the user widens it. Hong Kong, Taiwan, Macau, and other non-mainland locations are neither track.",
@@ -318,11 +318,8 @@
       ]
     },
     "excluded_companies": [],
-    "excluded_companies_note": "Deliberately empty. The US exclusion list does not carry over: American Express and Siemens were excluded specifically because they do not sponsor, which is void in China, and Siemens runs large China R&D operations. The remaining US exclusions were preferences recorded without a stated reason, so whether they apply to a China office is the user's call. Confirm before the first China fetch adds rows for any of them.",
-    "open_questions": [
-      "Which US excluded companies carry over to the China track.",
-      "Whether a 中文简历 is needed or the existing English resume is used for 外企. resume_routing.md has no China entry and dashboard/china/resume_rules.csv is empty.",
-      "Whether the candidate intends to relocate to China for these roles or treats 外企 China offices as a fallback. Does not change screening, but changes how China leads rank against the US queue."
-    ]
+    "excluded_companies_note": "None. Confirmed by the user on 2026-09-05: no US exclusion carries over to this track. The US list was built for US-specific reasons, and the user has settled that none of it applies. Screen every 外企 on its own merits.",
+    "resume": "English resume only. Confirmed by the user on 2026-09-05: no 中文简历 is needed and the existing English resume is used for 外企, same file as the US track. A 校招 form that forces Chinese is a handoff, not a reason to draft one.",
+    "ranking_against_us_track": "None. Confirmed by the user on 2026-09-05: the two tracks are fully independent and neither takes priority. Do not rank China leads against US leads, call one a fallback for the other, or merge them into a shared queue or total."
   }
 }

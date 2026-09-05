@@ -54,8 +54,24 @@ const emptyFilters: Filters = {
 const priorityRank: Record<string, number> = { High: 0, Medium: 1, Low: 2 };
 const statusRank: Record<string, number> = { Pending: 0, 'Needs user': 1, Blocked: 2, Submitted: 3, Skipped: 4 };
 
+// Tracking params only. Identifying params such as gh_jid must survive: several employers
+// (nuro.ai/careersitem, m1technology.com/careers, smxtech.com/careers) put the requisition id
+// in the query string, so stripping the whole query collapses every one of their postings
+// into a single key — which silently hid a live Nuro lead and mis-flagged another as archived.
+const trackingParams = new Set(['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'ref', 'gh_src', 'src']);
+
 function normalizeUrl(url: string) {
-  return url.split('?')[0].replace(/\/$/, '');
+  const [base, query] = url.split('?');
+  const trimmed = base.replace(/\/$/, '');
+  if (!query) return trimmed;
+  const kept = query
+    .split('&')
+    .filter((pair) => {
+      const key = pair.split('=')[0].toLowerCase();
+      return key && !trackingParams.has(key);
+    })
+    .sort();
+  return kept.length > 0 ? `${trimmed}?${kept.join('&')}` : trimmed;
 }
 
 function compactLocation(location: string) {

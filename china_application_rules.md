@@ -22,7 +22,7 @@ is neither track and is not recorded. Ask before treating 港澳台 as in scope.
 
 ## Mode
 
-Volume, same as the US track. Same resume until a China-specific variant exists — see Open Questions.
+Volume, same as the US track. Same English resume as the US track — see Resume below.
 
 ## Boundary
 
@@ -80,19 +80,11 @@ a US role and belongs on the US track, not here.
 
 ## Excluded Companies
 
-**Starts empty, deliberately.** The US exclusion list does not carry over automatically, because most of
-its entries were added for reasons that do not exist on this track:
+**None.** Confirmed by the user on 2026-09-05: no US exclusion carries over to this track.
 
-- American Express and Siemens were excluded on 2026-09-02 explicitly because *they do not sponsor*.
-  That reasoning is void in China. Siemens in particular runs large China R&D operations and would
-  otherwise be a strong 外企 match, so carrying the exclusion over would be a mistake.
-- Amazon, Visa, Cisco, T-Mobile, Roblox, CVS Health, Cerebras, Bot Auto, CGI, BeaconFire, Hired,
-  InstaLILY AI, and Warner Bros. Discovery were user preferences recorded without a stated reason, so
-  whether they apply to a China office is the user's call, not an inference.
-- TikTok and ByteDance are excluded until 2027-01-01, but they are domestic companies and already out of
-  scope here.
-
-Ask the user which US exclusions should carry over before the first China fetch adds rows for any of them.
+The US list was built for US-specific reasons — American Express and Siemens were excluded because
+they do not sponsor, which is void here — and the user has settled that none of it applies. Screen every
+外企 on its own merits. If a company should be excluded on this track, it will be added here on its own.
 
 ## Location Policy
 
@@ -127,14 +119,17 @@ Identical to the US track: `Pending`, `Needs user`, `Skipped`, `Blocked`, `Submi
 submissions count. Archived means dismissed, not applied — same as the US track: the archived flag is
 set, status stays as it was, and `dashboard/china/application_log.csv` is untouched.
 
-## Open Questions
+## Resume
 
-Carried into the first China fetch rather than guessed:
+English resume only. Confirmed by the user on 2026-09-05: no 中文简历 is needed, and the existing
+English resume is used for 外企 applications, same file as the US track.
 
-1. Which US excluded companies carry over (see Excluded Companies above).
-2. Whether a Chinese-language resume (中文简历) is needed, or whether the existing English resume is used
-   for 外企. Most 外企 accept English, but 校招 systems often require a Chinese-language form.
-   `resume_routing.md` currently has no China entry and `dashboard/china/resume_rules.csv` is empty.
-3. Whether the candidate intends to relocate to China for these roles, or is looking at 外企 China offices
-   as a fallback. This does not change screening but does change how the leads should be ranked against
-   the US queue.
+If a 校招 system later forces a Chinese-language form, that is a handoff to the user, not a reason to
+translate or draft one automatically.
+
+## Ranking Against the US Track
+
+None. Confirmed by the user on 2026-09-05: this track is fully independent of the US track and neither
+takes priority over the other. Do not rank China leads against US leads, do not describe one as a
+fallback for the other, and do not merge them into a shared queue or a shared daily total. Report each
+track on its own terms.
