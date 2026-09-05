@@ -23,8 +23,10 @@
     "notice_period": ""
   },
   "education": {
-    "graduation_window": "December 2026 through May 2027",
-    "graduation_window_policy": "For lead screening, keep postings that accept graduation dates between December 2026 and May 2027. If no graduation-window requirement is listed, do not skip solely for missing graduation wording. If a posting explicitly requires a graduation date outside this window, skip it. Ask before answering forms that require an exact graduation month or date."
+    "graduation_window": "December 2026 or May 2027 (both selectable)",
+    "graduation_window_policy": "Confirmed by the user on 2026-09-05: the candidate can graduate at EITHER December 2026 or May 2027. Both endpoints are available choices, not a range the candidate happens to fall somewhere inside. Screening consequence: a posting is eligible on graduation grounds if it accepts either endpoint. 'Graduate in 2027' is satisfied by choosing May 2027; 'graduate in 2026' or 'December 2026' is satisfied by choosing December 2026; 'May/June 2027' is satisfied by May 2027; 'Fall 2026 or Spring 2027' is satisfied by either. Skip on graduation only when a posting requires a date that neither endpoint can meet, such as 2028 or Summer 2028. If no graduation requirement is listed, do not skip. Forms that demand one exact month are still a handoff to the user, since the candidate must pick one.",
+    "graduation_date_is_selectable": true,
+    "graduation_window_confirmed_on": "2026-09-05"
   },
   "work_authorization": {
     "country": "United States",
