@@ -2,6 +2,20 @@
 
 These CSV files are the workflow memory. They can be edited directly or imported into Excel, Google Sheets, Airtable, or Notion.
 
+## Tracks
+
+Two independent pipelines, added 2026-09-05. They share the file layout below but never share rows.
+
+- **US track** — this directory. Governed by `application_rules.md`, screened against the 90,000 USD
+  floor, US location tiers, and F-1 OPT / sponsorship rules.
+- **China track** — `china/`. Governed by `china_application_rules.md`, screened against the 250,000 RMB
+  floor and mainland China location tiers, with work authorization not a screening axis at all
+  (中国公民，无需工作许可). Scope is 外企 with China offices; Chinese domestic companies are out of scope.
+
+A posting belongs to exactly one track, decided by its work location. The dashboard UI has a region
+switcher in the header, and archive write-backs carry the region so they land in the matching tree.
+Counts, daily summaries, and automation rules are kept per track — never add a China row to a US total.
+
 ## Sheets
 
 - `daily_dashboard.csv`: daily totals, sources, summary, and user actions needed.

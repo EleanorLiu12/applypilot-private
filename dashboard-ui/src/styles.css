@@ -689,3 +689,55 @@ footer span {
     flex-direction: column;
   }
 }
+
+/* Region switcher: selects which pipeline (US or China) is in view.
+   Shares the visual language of .view-toggle, which switches views within one pipeline. */
+.region-toggle {
+  display: inline-flex;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  box-shadow: var(--shadow);
+}
+
+.region-toggle button {
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  border: 0;
+  border-right: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.region-toggle button:last-child {
+  border-right: 0;
+}
+
+.region-toggle button:hover {
+  background: var(--surface-3);
+}
+
+.region-toggle button.is-active {
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 600;
+}
+
+.region-count {
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: var(--surface-3);
+  color: var(--muted);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.region-toggle button.is-active .region-count {
+  background: var(--surface-2);
+  color: var(--text);
+}

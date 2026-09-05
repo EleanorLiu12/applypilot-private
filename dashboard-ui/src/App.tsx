@@ -8,6 +8,7 @@ import {
   ExternalLink,
   Filter,
   Moon,
+  Globe2,
   Search,
   ShieldAlert,
   SlidersHorizontal,
@@ -16,16 +17,25 @@ import {
 } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { dashboardData } from './data/dashboardData';
-import type { ApplicationLogEntry, AppliedArchiveEntry, Filters, JobLead, SortKey } from './types';
+import type { ApplicationLogEntry, AppliedArchiveEntry, Filters, JobLead, Region, SortKey } from './types';
 
-const jobs = dashboardData.jobPool as unknown as JobLead[];
-const applications = dashboardData.applicationLog as unknown as ApplicationLogEntry[];
-const appliedArchive = dashboardData.appliedArchive as unknown as AppliedArchiveEntry[];
 const legacyAppliedOverrideStorageKey = 'applypilot-applied-overrides';
 const archiveWritebackEndpoint = '/api/archive-job';
+const regionStorageKey = 'applypilot-region';
 
 type ArchivedJobs = Record<string, boolean>;
 type ArchiveMode = 'active' | 'archive';
+
+// The US and China tracks are separate pipelines with separate CSVs. They never share rows,
+// so every data helper below takes the dataset for the region currently being viewed.
+type RegionDataset = {
+  jobs: JobLead[];
+  applications: ApplicationLogEntry[];
+  appliedArchive: AppliedArchiveEntry[];
+  archivedKeys: Set<string>;
+};
+
+const regionLabels: Record<Region, string> = { us: 'United States', china: '中国 China' };
 
 const emptyFilters: Filters = {
   search: '',
@@ -56,7 +66,21 @@ function archiveEntryKey(entry: AppliedArchiveEntry) {
   return normalizeUrl(entry.job_url) || `${entry.company.toLowerCase()}::${entry.job_title.toLowerCase()}`;
 }
 
-const backendArchivedJobKeys = new Set(appliedArchive.map(archiveEntryKey));
+function buildDataset(region: Region): RegionDataset {
+  const source = dashboardData.regions[region] as unknown as {
+    jobPool: JobLead[];
+    applicationLog: ApplicationLogEntry[];
+    appliedArchive: AppliedArchiveEntry[];
+  } | undefined;
+
+  const jobs = source?.jobPool ?? [];
+  const applications = source?.applicationLog ?? [];
+  const appliedArchive = source?.appliedArchive ?? [];
+
+  return { jobs, applications, appliedArchive, archivedKeys: new Set(appliedArchive.map(archiveEntryKey)) };
+}
+
+const datasets: Record<Region, RegionDataset> = { us: buildDataset('us'), china: buildDataset('china') };
 
 function jobKey(job: JobLead) {
   return normalizeUrl(job.job_url) || `${job.company.toLowerCase()}::${job.job_title.toLowerCase()}`;
@@ -75,14 +99,14 @@ function hasArchivedFlag(job: JobLead) {
   return String(job.archived ?? '').toLowerCase() === 'true';
 }
 
-function getInitialArchivedJobs() {
+function getInitialArchivedJobs(dataset: RegionDataset) {
   const initial: ArchivedJobs = {};
 
-  for (const key of backendArchivedJobKeys) {
+  for (const key of dataset.archivedKeys) {
     initial[key] = true;
   }
 
-  for (const job of jobs) {
+  for (const job of dataset.jobs) {
     if (hasArchivedFlag(job)) {
       initial[jobKey(job)] = true;
     }
@@ -97,10 +121,10 @@ function getInitialArchivedJobs() {
   return initial;
 }
 
-function isSubmitted(job: JobLead) {
+function isSubmitted(job: JobLead, dataset: RegionDataset) {
   if (job.status === 'Submitted') return true;
   const jobUrl = normalizeUrl(job.job_url);
-  return applications.some((entry) => {
+  return dataset.applications.some((entry) => {
     if (!entry.job_url && !entry.company && !entry.job_title) return false;
     const sameUrl = entry.job_url && normalizeUrl(entry.job_url) === jobUrl;
     const sameJob = entry.company.toLowerCase() === job.company.toLowerCase() && entry.job_title.toLowerCase() === job.job_title.toLowerCase();
@@ -108,11 +132,11 @@ function isSubmitted(job: JobLead) {
   });
 }
 
-function isArchived(job: JobLead, archivedJobs: ArchivedJobs = {}) {
-  if (isSubmitted(job)) return true;
+function isArchived(job: JobLead, archivedJobs: ArchivedJobs, dataset: RegionDataset) {
+  if (isSubmitted(job, dataset)) return true;
   const manualValue = archivedJobs[jobKey(job)];
   if (typeof manualValue === 'boolean') return manualValue;
-  return hasArchivedFlag(job) || backendArchivedJobKeys.has(jobKey(job));
+  return hasArchivedFlag(job) || dataset.archivedKeys.has(jobKey(job));
 }
 
 function dateValue(value: string) {
@@ -139,7 +163,7 @@ function isOmitted(omit: keyof Filters | (keyof Filters)[] | undefined, key: key
   return Array.isArray(omit) ? omit.includes(key) : omit === key;
 }
 
-function jobMatches(job: JobLead, filters: Filters, archivedJobs: ArchivedJobs, omit?: keyof Filters | (keyof Filters)[]) {
+function jobMatches(job: JobLead, filters: Filters, archivedJobs: ArchivedJobs, dataset: RegionDataset, omit?: keyof Filters | (keyof Filters)[]) {
   if (!isOmitted(omit, 'search') && !matchesSearch(job, filters.search)) return false;
   if (!isOmitted(omit, 'status') && filters.status !== 'All' && job.status !== filters.status) return false;
   if (!isOmitted(omit, 'priority') && filters.priority !== 'All' && job.priority !== filters.priority) return false;
@@ -149,7 +173,7 @@ function jobMatches(job: JobLead, filters: Filters, archivedJobs: ArchivedJobs, 
   if (!isOmitted(omit, 'location') && filters.location !== 'All' && job.location !== filters.location) return false;
   if (!isOmitted(omit, 'remotePolicy') && filters.remotePolicy !== 'All' && job.remote_policy !== filters.remotePolicy) return false;
   if (!isOmitted(omit, 'applied')) {
-    const archived = isArchived(job, archivedJobs);
+    const archived = isArchived(job, archivedJobs, dataset);
     if (filters.applied === 'Applied' && !archived) return false;
     if (filters.applied === 'Not applied' && archived) return false;
   }
@@ -158,13 +182,13 @@ function jobMatches(job: JobLead, filters: Filters, archivedJobs: ArchivedJobs, 
   return true;
 }
 
-function getOptions(key: keyof Filters, filters: Filters, archivedJobs: ArchivedJobs, archiveMode: ArchiveMode) {
+function getOptions(key: keyof Filters, filters: Filters, archivedJobs: ArchivedJobs, archiveMode: ArchiveMode, dataset: RegionDataset) {
   const omittedFilters: keyof Filters | (keyof Filters)[] = archiveMode === 'archive' && key !== 'applied' ? [key, 'applied'] : key;
-  const base = jobs.filter((job) => {
-    const archived = isArchived(job, archivedJobs);
+  const base = dataset.jobs.filter((job) => {
+    const archived = isArchived(job, archivedJobs, dataset);
     if (archiveMode === 'active' && archived) return false;
     if (archiveMode === 'archive' && !archived) return false;
-    return jobMatches(job, filters, archivedJobs, omittedFilters);
+    return jobMatches(job, filters, archivedJobs, dataset, omittedFilters);
   });
   if (key === 'status') return ['All', ...uniq(base.map((job) => job.status))];
   if (key === 'priority') return ['All', ...uniq(base.map((job) => job.priority))];
@@ -194,11 +218,11 @@ function archiveErrorMessage(error: unknown) {
   return `Archive write-back failed.${detail} Run the dashboard with npm --prefix dashboard-ui run dev so the local server can update CSV files.`;
 }
 
-async function persistArchiveChanges(jobsToUpdate: JobLead[], archived: boolean) {
+async function persistArchiveChanges(jobsToUpdate: JobLead[], archived: boolean, region: Region) {
   const response = await fetch(archiveWritebackEndpoint, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ jobs: jobsToUpdate, archived }),
+    body: JSON.stringify({ jobs: jobsToUpdate, archived, region }),
   });
   const payload = await response.json().catch(() => null) as { error?: string } | null;
   if (!response.ok) {
@@ -221,8 +245,8 @@ function SelectControl({ label, value, options, onChange }: { label: string; val
   );
 }
 
-function JobCard({ job, archived, saving, onArchiveChange }: { job: JobLead; archived: boolean; saving: boolean; onArchiveChange: (archived: boolean) => void }) {
-  const archiveLocked = isSubmitted(job);
+function JobCard({ job, archived, saving, dataset, onArchiveChange }: { job: JobLead; archived: boolean; saving: boolean; dataset: RegionDataset; onArchiveChange: (archived: boolean) => void }) {
+  const archiveLocked = isSubmitted(job, dataset);
   const metaItems = [compactLocation(job.location), job.role_family, job.level, job.remote_policy, job.posted_date ? `Posted ${job.posted_date}` : '']
     .filter((item) => item && item !== 'Unspecified');
   return (
@@ -257,8 +281,10 @@ function JobCard({ job, archived, saving, onArchiveChange }: { job: JobLead; arc
 
 export function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>(() => (localStorage.getItem('applypilot-theme') === 'dark' ? 'dark' : 'light'));
+  const [region, setRegion] = useState<Region>(() => (localStorage.getItem(regionStorageKey) === 'china' ? 'china' : 'us'));
+  const dataset = datasets[region];
   const [filters, setFilters] = useState<Filters>(emptyFilters);
-  const [archivedJobs, setArchivedJobs] = useState<ArchivedJobs>(getInitialArchivedJobs);
+  const [archivedJobs, setArchivedJobs] = useState<ArchivedJobs>(() => getInitialArchivedJobs(datasets[region]));
   const [savingArchiveKeys, setSavingArchiveKeys] = useState<ArchivedJobs>({});
   const [archiveError, setArchiveError] = useState('');
   const [archiveMode, setArchiveMode] = useState<ArchiveMode>('active');
@@ -270,15 +296,23 @@ export function App() {
     localStorage.setItem('applypilot-theme', theme);
   }, [theme]);
 
+  // Archive state is per-region: switching tracks reloads it from that track's own CSVs.
+  useEffect(() => {
+    localStorage.setItem(regionStorageKey, region);
+    setArchivedJobs(getInitialArchivedJobs(datasets[region]));
+    setArchiveError('');
+  }, [region]);
+
   useEffect(() => {
     if (migrationStarted.current) return;
     migrationStarted.current = true;
 
     const legacyArchivedJobs = readLegacyArchivedJobs();
-    const jobsToMigrate = jobs.filter((job) => legacyArchivedJobs[jobKey(job)] === true && !backendArchivedJobKeys.has(jobKey(job)) && !hasArchivedFlag(job));
+    const usDataset = datasets.us;
+    const jobsToMigrate = usDataset.jobs.filter((job) => legacyArchivedJobs[jobKey(job)] === true && !usDataset.archivedKeys.has(jobKey(job)) && !hasArchivedFlag(job));
     if (jobsToMigrate.length === 0) return;
 
-    void persistArchiveChanges(jobsToMigrate, true)
+    void persistArchiveChanges(jobsToMigrate, true, 'us')
       .then(() => {
         localStorage.removeItem(legacyAppliedOverrideStorageKey);
         setArchiveError('');
@@ -287,11 +321,11 @@ export function App() {
   }, []);
 
   const filteredJobs = useMemo(() => {
-    const result = jobs.filter((job) => {
-      const archived = isArchived(job, archivedJobs);
+    const result = dataset.jobs.filter((job) => {
+      const archived = isArchived(job, archivedJobs, dataset);
       if (archiveMode === 'active' && archived) return false;
       if (archiveMode === 'archive' && !archived) return false;
-      return jobMatches(job, filters, archivedJobs, archiveMode === 'archive' ? 'applied' : undefined);
+      return jobMatches(job, filters, archivedJobs, dataset, archiveMode === 'archive' ? 'applied' : undefined);
     });
     return [...result].sort((a, b) => {
       if (sortKey === 'priority') return (priorityRank[a.priority] ?? 9) - (priorityRank[b.priority] ?? 9) || b.date_found.localeCompare(a.date_found);
@@ -299,7 +333,7 @@ export function App() {
       if (sortKey === 'company') return a.company.localeCompare(b.company);
       return dateValue(b[sortKey]) - dateValue(a[sortKey]) || (priorityRank[a.priority] ?? 9) - (priorityRank[b.priority] ?? 9);
     });
-  }, [archivedJobs, archiveMode, filters, sortKey]);
+  }, [archivedJobs, archiveMode, dataset, filters, sortKey]);
 
   const updateFilter = <K extends keyof Filters>(key: K, value: Filters[K]) => setFilters((current) => ({ ...current, [key]: value }));
   const setJobArchived = async (job: JobLead, archived: boolean) => {
@@ -310,7 +344,7 @@ export function App() {
     setArchivedJobs((current) => ({ ...current, [key]: archived }));
 
     try {
-      await persistArchiveChanges([job], archived);
+      await persistArchiveChanges([job], archived, region);
       localStorage.removeItem(legacyAppliedOverrideStorageKey);
     } catch (error) {
       setArchivedJobs((current) => {
@@ -340,6 +374,22 @@ export function App() {
           <h1>Job Search Dashboard</h1>
         </div>
         <div className="top-actions">
+          <div className="region-toggle" role="tablist" aria-label="Job market">
+            {(['us', 'china'] as Region[]).map((value) => (
+              <button
+                key={value}
+                type="button"
+                role="tab"
+                aria-selected={region === value}
+                className={region === value ? 'is-active' : ''}
+                onClick={() => setRegion(value)}
+              >
+                <Globe2 size={16} />
+                {regionLabels[value]}
+                <span className="region-count">{formatCount(datasets[value].jobs.length)}</span>
+              </button>
+            ))}
+          </div>
           <button className="ghost-button" onClick={() => setFilters(emptyFilters)}><X size={16} />Reset</button>
           <button className="ghost-button" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>{theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}{theme === 'dark' ? 'Light' : 'Dark'}</button>
         </div>
@@ -364,8 +414,9 @@ export function App() {
                   <JobCard
                     key={`${job.company}-${job.job_title}-${job.job_url}`}
                     job={job}
-                    archived={isArchived(job, archivedJobs)}
+                    archived={isArchived(job, archivedJobs, dataset)}
                     saving={savingArchiveKeys[key] === true}
+                    dataset={dataset}
                     onArchiveChange={(archived) => void setJobArchived(job, archived)}
                   />
                 );
@@ -380,12 +431,12 @@ export function App() {
           <label className="sort-field"><ArrowDownUp size={18} /><select value={sortKey} onChange={(event) => setSortKey(event.target.value as SortKey)}><option value="date_found">Sort by found date</option><option value="posted_date">Sort by posted date</option><option value="priority">Sort by priority</option><option value="status">Sort by status</option><option value="company">Sort by company</option></select></label>
           </div>
           <div className="filter-grid">
-          <SelectControl label="Archive" value={filters.applied} options={getOptions('applied', filters, archivedJobs, archiveMode)} onChange={(value) => updateFilter('applied', value)} />
-          <SelectControl label="Priority" value={filters.priority} options={getOptions('priority', filters, archivedJobs, archiveMode)} onChange={(value) => updateFilter('priority', value)} />
-          <SelectControl label="Role" value={filters.roleFamily} options={getOptions('roleFamily', filters, archivedJobs, archiveMode)} onChange={(value) => updateFilter('roleFamily', value)} />
-          <SelectControl label="Level" value={filters.level} options={getOptions('level', filters, archivedJobs, archiveMode)} onChange={(value) => updateFilter('level', value)} />
-          <SelectControl label="Source" value={filters.source} options={getOptions('source', filters, archivedJobs, archiveMode)} onChange={(value) => updateFilter('source', value)} />
-          <SelectControl label="Location" value={filters.location} options={getOptions('location', filters, archivedJobs, archiveMode)} onChange={(value) => updateFilter('location', value)} />
+          <SelectControl label="Archive" value={filters.applied} options={getOptions('applied', filters, archivedJobs, archiveMode, dataset)} onChange={(value) => updateFilter('applied', value)} />
+          <SelectControl label="Priority" value={filters.priority} options={getOptions('priority', filters, archivedJobs, archiveMode, dataset)} onChange={(value) => updateFilter('priority', value)} />
+          <SelectControl label="Role" value={filters.roleFamily} options={getOptions('roleFamily', filters, archivedJobs, archiveMode, dataset)} onChange={(value) => updateFilter('roleFamily', value)} />
+          <SelectControl label="Level" value={filters.level} options={getOptions('level', filters, archivedJobs, archiveMode, dataset)} onChange={(value) => updateFilter('level', value)} />
+          <SelectControl label="Source" value={filters.source} options={getOptions('source', filters, archivedJobs, archiveMode, dataset)} onChange={(value) => updateFilter('source', value)} />
+          <SelectControl label="Location" value={filters.location} options={getOptions('location', filters, archivedJobs, archiveMode, dataset)} onChange={(value) => updateFilter('location', value)} />
           <label className="field"><span>Posted From</span><input type="date" value={filters.dateFrom} onChange={(event) => updateFilter('dateFrom', event.target.value)} /></label>
           <label className="field"><span>Posted To</span><input type="date" value={filters.dateTo} onChange={(event) => updateFilter('dateTo', event.target.value)} /></label>
           </div>
@@ -393,7 +444,7 @@ export function App() {
           </aside>
         </section>
       </main>
-      <footer><span><CalendarDays size={16} />Data generated {new Date(dashboardData.generatedAt).toLocaleString()}</span><span><CheckCircle2 size={16} />Submission log rows: {applications.length}</span></footer>
+      <footer><span><CalendarDays size={16} />Data generated {new Date(dashboardData.generatedAt).toLocaleString()}</span><span><CheckCircle2 size={16} />Submission log rows: {dataset.applications.length}</span></footer>
     </div>
   );
 }

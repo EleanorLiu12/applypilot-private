@@ -272,5 +272,57 @@
     "background check or non-compete questions",
     "references",
     "portfolio or work sample ownership"
-  ]
+  ],
+  "china_track": {
+    "added": "2026-09-05",
+    "status": "scaffolded_not_yet_run",
+    "rules_file": "china_application_rules.md",
+    "dashboard_path": "dashboard/china/",
+    "scope": "Roles based in mainland China at 外企 (foreign-invested multinationals with China offices). Chinese domestic companies are out of scope unless the user widens it. Hong Kong, Taiwan, Macau, and other non-mainland locations are neither track.",
+    "separation": "Fully separate from the US track: separate CSVs, separate daily summaries, separate automation rules, separate counts. A posting belongs to exactly one track, decided by its work location.",
+    "work_authorization": {
+      "country": "China",
+      "current_authorization": "中国公民，在中国工作无需工作许可 (Chinese citizen; no work permit required to work in China).",
+      "requires_sponsorship": false,
+      "confirmed_by_user_on": "2026-09-05",
+      "screening_effect": "Work authorization is not a screening axis on this track. Do not skip, flag, or ask about sponsorship, visa, or 工作许可 for China-based roles. This is the largest single difference from the US track."
+    },
+    "compensation": {
+      "minimum_total_package_rmb_per_year": 250000,
+      "confirmed_by_user_on": "2026-09-05",
+      "answer_strategy": "Skip only when the entire explicitly listed annual total package sits below 250,000 RMB; a range that straddles it is acceptable. Compensation is listed far less often in China than in the US, so do not skip when it is absent."
+    },
+    "graduation_window": "Unchanged: December 2026 through May 2027. In 校招 terms this straddles 2026届 (winter) and 2027届; keep postings that accept either.",
+    "priority_signal": "留学生专场 / 海外院校专场 postings rank highest: many 外企 run a separate overseas-graduate track, and the candidate studies in the US.",
+    "location_priority_tiers": {
+      "tier_1": [
+        "上海",
+        "北京",
+        "深圳",
+        "杭州",
+        "广州"
+      ],
+      "tier_2": [
+        "苏州",
+        "南京",
+        "成都",
+        "西安",
+        "武汉",
+        "大连",
+        "无锡",
+        "珠海",
+        "天津"
+      ],
+      "tier_3": [
+        "Other mainland cities, case by case"
+      ]
+    },
+    "excluded_companies": [],
+    "excluded_companies_note": "Deliberately empty. The US exclusion list does not carry over: American Express and Siemens were excluded specifically because they do not sponsor, which is void in China, and Siemens runs large China R&D operations. The remaining US exclusions were preferences recorded without a stated reason, so whether they apply to a China office is the user's call. Confirm before the first China fetch adds rows for any of them.",
+    "open_questions": [
+      "Which US excluded companies carry over to the China track.",
+      "Whether a 中文简历 is needed or the existing English resume is used for 外企. resume_routing.md has no China entry and dashboard/china/resume_rules.csv is empty.",
+      "Whether the candidate intends to relocate to China for these roles or treats 外企 China offices as a fallback. Does not change screening, but changes how China leads rank against the US queue."
+    ]
+  }
 }

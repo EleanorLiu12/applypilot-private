@@ -1,3 +1,5 @@
+export type Region = 'us' | 'china';
+
 export type JobLead = {
   date_found: string;
   company: string;

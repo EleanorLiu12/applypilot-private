@@ -135,8 +135,26 @@ function parseJobsPayload(body: Record<string, unknown>) {
   return jobs;
 }
 
-async function updateJobPoolArchiveFlags(jobs: CsvRecord[], archived: boolean) {
-  const jobPoolPath = path.join(repoRoot, 'dashboard', 'job_pool.csv');
+type Region = 'us' | 'china';
+
+// The US track lives in dashboard/, the China track in dashboard/china/.
+// An archive must land in the same tree the lead came from, never the other one.
+function regionRoot(region: Region) {
+  return region === 'china' ? path.join(repoRoot, 'dashboard', 'china') : path.join(repoRoot, 'dashboard');
+}
+
+function parseRegion(value: unknown): Region {
+  if (value === 'china' || value === 'us') {
+    return value;
+  }
+  if (value === undefined || value === null || value === '') {
+    return 'us';
+  }
+  throw new Error(`Unknown region: ${String(value)}`);
+}
+
+async function updateJobPoolArchiveFlags(jobs: CsvRecord[], archived: boolean, region: Region) {
+  const jobPoolPath = path.join(regionRoot(region), 'job_pool.csv');
   const parsed = parseCsv(await readFile(jobPoolPath, 'utf8'));
   const headers = parsed.headers.includes('archived') ? parsed.headers : [...parsed.headers, 'archived'];
   const targetKeys = new Set(jobs.map(csvJobKey));
@@ -157,8 +175,8 @@ async function updateJobPoolArchiveFlags(jobs: CsvRecord[], archived: boolean) {
   return matched;
 }
 
-async function updateAppliedArchive(jobs: CsvRecord[], archived: boolean) {
-  const archivePath = path.join(repoRoot, 'dashboard', 'applied_archive.csv');
+async function updateAppliedArchive(jobs: CsvRecord[], archived: boolean, region: Region) {
+  const archivePath = path.join(regionRoot(region), 'applied_archive.csv');
   const parsed = parseCsv(await readFile(archivePath, 'utf8'));
   const headers = parsed.headers.length > 0 ? parsed.headers : archiveFields;
   const targetKeys = new Set(jobs.map(csvJobKey));
@@ -221,10 +239,11 @@ function attachArchiveMiddleware(middlewares: Connect.Server) {
       const body = await readJsonBody(req);
       const jobs = parseJobsPayload(body);
       const archived = body.archived === true;
-      const jobPoolMatches = await updateJobPoolArchiveFlags(jobs, archived);
-      const archivedCount = await updateAppliedArchive(jobs, archived);
+      const region = parseRegion(body.region);
+      const jobPoolMatches = await updateJobPoolArchiveFlags(jobs, archived, region);
+      const archivedCount = await updateAppliedArchive(jobs, archived, region);
       await syncDashboardData();
-      sendJson(res, 200, { archived, updatedJobs: jobs.length, jobPoolMatches, archivedCount });
+      sendJson(res, 200, { archived, region, updatedJobs: jobs.length, jobPoolMatches, archivedCount });
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Archive write-back failed';
       sendJson(res, 500, { error: message });
