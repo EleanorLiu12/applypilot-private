@@ -75,6 +75,12 @@ a US role and belongs on the US track, not here.
 - The role is 外包 / 派遣 / 实习 / 兼职 / 劳务派遣 (outsourced, dispatch, internship, part-time), or is
   posted by a 猎头 or staffing agency rather than the employer. This mirrors the US contract/agency skip
   and matters more here, since 外包 postings at 外企 names are common.
+- **实习 is a hard skip on this track, confirmed by the user on 2026-09-05. 校招全职 is the sole entry
+  point.** Do not surface internships as an alternative, a fallback, or a "ready entry point if the
+  boundary changes." The reasoning is structural, not preference: 外企 China 日常实习 is typically a
+  one-year full-time in-school placement aimed at 研二/研三 students with a year or more remaining, so a
+  December 2026 – May 2027 graduate cannot satisfy it. See the 2026-09-05 rule on why the US
+  summer-internship model does not transfer.
 - The role is in space, aerospace, aircraft, defense, or military work. Carried over from the US track as
   a standing industry preference, independent of any authorization reasoning.
 

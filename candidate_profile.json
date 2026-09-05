@@ -275,7 +275,7 @@
   ],
   "china_track": {
     "added": "2026-09-05",
-    "status": "configured_not_yet_run",
+    "status": "live",
     "rules_file": "china_application_rules.md",
     "dashboard_path": "dashboard/china/",
     "scope": "Roles based in mainland China at 外企 (foreign-invested multinationals with China offices). Chinese domestic companies are out of scope unless the user widens it. Hong Kong, Taiwan, Macau, and other non-mainland locations are neither track.",
@@ -320,6 +320,7 @@
     "excluded_companies": [],
     "excluded_companies_note": "None. Confirmed by the user on 2026-09-05: no US exclusion carries over to this track. The US list was built for US-specific reasons, and the user has settled that none of it applies. Screen every 外企 on its own merits.",
     "resume": "English resume only. Confirmed by the user on 2026-09-05: no 中文简历 is needed and the existing English resume is used for 外企, same file as the US track. A 校招 form that forces Chinese is a handoff, not a reason to draft one.",
-    "ranking_against_us_track": "None. Confirmed by the user on 2026-09-05: the two tracks are fully independent and neither takes priority. Do not rank China leads against US leads, call one a fallback for the other, or merge them into a shared queue or total."
+    "ranking_against_us_track": "None. Confirmed by the user on 2026-09-05: the two tracks are fully independent and neither takes priority. Do not rank China leads against US leads, call one a fallback for the other, or merge them into a shared queue or total.",
+    "internships": "Out of scope. Confirmed by the user on 2026-09-05: 校招全职 is the sole entry point on the China track. 外企 China 日常实习 is typically a one-year full-time in-school placement for 研二/研三 students, which a December 2026 – May 2027 graduate cannot satisfy. Do not surface internships as an alternative or fallback."
   }
 }
