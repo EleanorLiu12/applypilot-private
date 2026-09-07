@@ -23,6 +23,9 @@
     "notice_period": ""
   },
   "education": {
+    "degree_level": "Bachelor's",
+    "degree_level_policy": "Confirmed by the user on 2026-09-06: the candidate completes a Bachelor's degree. Screening consequence: a posting is eligible when a Bachelor's satisfies its stated minimum degree. An advanced degree that is preferred, listed as one acceptable option among several, or named as a plus is not a skip; a stated minimum of Master's or PhD is. This closes the question raised on 2026-09-02 and repeated on 2026-09-03 and 2026-09-05, which had cost at least seven postings including Snowflake AI Research Scientist New Grad at 176,000-230,000 USD, NVIDIA, Trulioo, Micron, Applied Intuition, Morgan Stanley, and Applied Materials. Those rows stay skipped: all of them require a Master's or a PhD, which a Bachelor's does not satisfy.",
+    "degree_level_confirmed_on": "2026-09-06",
     "graduation_window": "December 2026 or May 2027 (both selectable)",
     "graduation_window_policy": "Confirmed by the user on 2026-09-05: the candidate can graduate at EITHER December 2026 or May 2027. Both endpoints are available choices, not a range the candidate happens to fall somewhere inside. Screening consequence: a posting is eligible on graduation grounds if it accepts either endpoint. 'Graduate in 2027' is satisfied by choosing May 2027; 'graduate in 2026' or 'December 2026' is satisfied by choosing December 2026; 'May/June 2027' is satisfied by May 2027; 'Fall 2026 or Spring 2027' is satisfied by either. Skip on graduation only when a posting requires a date that neither endpoint can meet, such as 2028 or Summer 2028. If no graduation requirement is listed, do not skip. Forms that demand one exact month are still a handoff to the user, since the candidate must pick one.",
     "graduation_date_is_selectable": true,
@@ -35,12 +38,15 @@
     "requires_sponsorship_now": null,
     "requires_sponsorship_in_future": true,
     "answer_exactly_as": "Authorized to work in the United States: Yes. Will require employer visa sponsorship now or in the future: Yes.",
-    "notes_for_unclear_forms": "If a form separates 'requires sponsorship now' from 'requires sponsorship in the future', ask the user before answering the 'now' question. If the form asks 'now or in the future', answer Yes."
+    "notes_for_unclear_forms": "If a form separates 'requires sponsorship now' from 'requires sponsorship in the future', ask the user before answering the 'now' question. If the form asks 'now or in the future', answer Yes.",
+    "no_sponsorship_posting_policy": "Narrowed by the user on 2026-09-06, same day it was first widened. A company posting that states no visa sponsorship stays an automatic skip, as it was from 2026-07-14. The single exception is Academic Research Engineering roles at universities and research institutions: there a no-sponsorship statement is a Consider, not a skip, because F-1 OPT authorizes the start of employment without any employer sponsorship and the user confirmed such a role is worth taking on OPT alone. On those roles record 'confirm E-Verify enrollment' as the next action, since E-Verify decides whether the 24-month STEM OPT extension is usable, and note the three-year horizon absent a later sponsor. Unchanged and still a skip everywhere: postings that exclude F-1 OPT or STEM OPT by name, require permanent or unrestricted US work authorization, or require citizenship, US person status, or clearance. Consequence held deliberately: the company-side skips from earlier fetches, and the American Express and Siemens company exclusions made on 2026-09-02 on no-sponsorship grounds, all stand.",
+    "no_sponsorship_posting_policy_confirmed_on": "2026-09-06"
   },
   "targets": {
     "primary_role_families": [
       "Software Engineering",
-      "AI Engineering"
+      "AI Engineering",
+      "Academic Research Engineering"
     ],
     "secondary_role_families": [],
     "target_titles": [
@@ -58,7 +64,6 @@
       "Forward Deployed Engineer",
       "Forward Deploy Engineer",
       "Job titles that explicitly say C++",
-      "Job titles that include PhD or postings that explicitly target/require PhD candidates",
       "Product Manager",
       "Associate Product Manager",
       "Product Management roles",
@@ -70,7 +75,8 @@
       "Senior roles",
       "Staff roles",
       "Principal roles",
-      "Lead roles"
+      "Lead roles",
+      "Postings whose stated minimum degree is a Master's or a PhD; a PhD in the title alone is not disqualifying when the degree is not actually required"
     ],
     "companies_to_avoid": [
       "Amazon",
@@ -127,7 +133,7 @@
     "target_locations": [
       "California",
       "Washington",
-      "New York City",
+      "New York",
       "Massachusetts",
       "Illinois",
       "Minnesota",
@@ -150,7 +156,7 @@
       "tier_1": [
         "California: San Francisco Bay Area, San Jose, Palo Alto, Mountain View, Sunnyvale, Los Angeles, Irvine/Orange County, San Diego",
         "Washington: Seattle, Bellevue, Redmond",
-        "New York: New York City",
+        "New York: New York State, statewide, with New York City first",
         "Massachusetts: Boston, Cambridge",
         "Illinois: Chicago",
         "Minnesota: Minneapolis, St. Paul",
@@ -177,14 +183,40 @@
     },
     "location_ranking_policy": "Prioritize CA, WA, NYC, Boston/Cambridge, Chicago, Minneapolis/St. Paul, Austin, and Dallas first; then strong tech hubs in other preferred states and Texas statewide; then remaining listed locations. Refresh location recommendations from public job-market signals during lead finding when web search is available.",
     "remote_hybrid_onsite_preference": "Accept remote, hybrid, and onsite roles.",
-    "relocation_policy": "Target roles in listed preferred locations, with Tier 1 locations preferred. Texas is acceptable statewide. Ask before treating any other non-listed state as acceptable."
+    "relocation_policy": "Target roles in listed preferred locations, with Tier 1 locations preferred. Texas and New York are acceptable statewide; New York was widened from New York City only by the user on 2026-09-06. Ask before treating any other non-listed state as acceptable. Academic Research Engineering roles are exempt from this policy and accept any US location, confirmed 2026-09-06.",
+    "academic_research_titles": [
+      "Research Assistant",
+      "Predoctoral Research Assistant",
+      "Predoc",
+      "Predoctoral Fellow",
+      "Research Associate",
+      "Technical Associate",
+      "Technical Associate I",
+      "Technical Associate II",
+      "Research Engineer",
+      "Research Software Engineer",
+      "Research Programmer",
+      "Scientific Programmer",
+      "Research Specialist",
+      "Research Computing Specialist",
+      "Software Developer",
+      "Software Developer 1",
+      "Software Engineer",
+      "Application Developer",
+      "Machine Learning Engineer",
+      "Data Scientist"
+    ],
+    "academic_research_title_policy": "Added 2026-09-06 after the user found MIT job 25997, Software Developer for the Machine Learning for Pharmaceutical Discovery and Synthesis consortium, which the title-driven search could not see. On this family the title never qualifies a posting; the job description does. The last six titles in the list are ordinary engineering titles that universities routinely use for research work, so a university posting is never dismissed on its title. Qualify a posting only when the body shows at least two of: named collaboration with faculty, PIs, research scientists, postdocs, or graduate students; designing or running experiments, evaluations, ablations, or benchmarks; contributing to papers or research documentation; building research infrastructure such as training/inference pipelines, evaluation harnesses, data pipelines, reproducibility tooling, or HPC workloads; affiliation with a named lab, center, consortium, or initiative rather than central IT. See the Academic Research Engineering section of application_rules.md for the full rule set.",
+    "academic_research_location_policy": "Confirmed by the user on 2026-09-06: the location policy and its tiers do not apply to Academic Research Engineering roles. Any US location is acceptable on this family, and leads are ranked by research fit and lab strength rather than by tier. The tiers were written for company jobs; applying them here would have excluded CMU in Pittsburgh, Michigan in Ann Arbor, Cornell in Ithaca, UIUC in Urbana, and Princeton, which is most of the strongest ML research in the country, for a family whose purpose is a research record ahead of a PhD application. Non-US locations stay out of scope on the US track."
   },
   "compensation": {
     "base_salary_range": "At least 90,000 USD per year",
     "minimum_base_salary_usd_per_year": 90000,
     "total_compensation_range": "",
     "answer_strategy": "For lead screening, skip a role only when its entire explicitly listed annual base salary range sits below 90,000 USD; a range that straddles 90,000 USD is acceptable. If compensation is not listed or is ambiguous, do not skip solely for compensation. For application forms, defer when allowed; otherwise ask before entering a required compensation field.",
-    "notes": "User set the floor at 90,000 USD on 2026-08-28, replacing the 120,000 USD floor used from 2026-07-14. This settled the straddling-salary question that had been open since 2026-08-18."
+    "notes": "User set the floor at 90,000 USD on 2026-08-28, replacing the 120,000 USD floor used from 2026-07-14. This settled the straddling-salary question that had been open since 2026-08-18.",
+    "academic_research_minimum_base_salary_usd_per_year": 60000,
+    "academic_research_compensation_policy": "Confirmed by the user on 2026-09-06: Academic Research Engineering roles use a 60,000 USD floor instead of the 90,000 USD industry floor, because academic pay bands sit far below industry. MIT MLPDS at 79,050-106,420 USD clears either floor; most predoc and RA postings clear only the academic one, and MIT FutureTech's Junior Research Scientist at 50,000 USD clears neither. Academic postings frequently omit salary entirely, which is not a skip."
   },
   "resume_files": [
     {
@@ -235,7 +267,18 @@
     "external_fit_tools": [
       "Simplify"
     ],
-    "source_policy": "Use all listed sources for lead finding, including public Ashby hosted job boards and Ashby posting pages when available. LinkedIn Premium personal search is allowed only through an already-authenticated user session or user-provided/exported lead data; do not ask for credentials, bypass login/2FA/CAPTCHA, or open application flows. For account-heavy or slow sources such as Workday and Handshake, collect leads only unless the user confirms access and later approves application-flow use."
+    "source_policy": "Use all listed sources for lead finding, including public Ashby hosted job boards and Ashby posting pages when available. LinkedIn Premium personal search is allowed only through an already-authenticated user session or user-provided/exported lead data; do not ask for credentials, bypass login/2FA/CAPTCHA, or open application flows. For account-heavy or slow sources such as Workday and Handshake, collect leads only unless the user confirms access and later approves application-flow use.",
+    "academic_research_sources": [
+      "MIT external careers portal (careers.peopleclick.com/careerscp/client_mit)",
+      "MIT FutureTech opportunities (futuretech.mit.edu/opportunities)",
+      "CSAIL Alliances jobs (cap.csail.mit.edu/members/jobs)",
+      "University career portals: Stanford, Berkeley and the UC system, CMU, Harvard, Princeton, Yale, Columbia, NYU, UW, Michigan, Cornell, UIUC, UCSD, Georgia Tech, UT Austin",
+      "HigherEdJobs",
+      "predoc.org",
+      "Academic Jobs Online",
+      "Lab, center, and faculty group opportunity pages"
+    ],
+    "academic_research_sources_added": "2026-09-06"
   },
   "voluntary_self_identification": {
     "strategy": "prefer_not_to_say",
