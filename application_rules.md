@@ -139,6 +139,7 @@ Default skip when:
 - The role is part-time, unpaid, contract, agency, internship, or commission-only unless explicitly allowed. A full-time salaried fixed-term academic appointment, such as a one-year term renewable subject to grant funding, is not a contract role and is not skipped on this ground.
 - The form requires video, extensive writing samples, references, or unsupported materials for a weak-fit role.
 - The job is a duplicate, already applied, closed, or stale without exceptional fit.
+- The posting was archived by the user in the dashboard. Archiving means the lead is dismissed for good, not that it was applied to. Confirmed by the user on 2026-09-09: "archive 的就是后面没必要出现的". Never resurface an archived posting, including a republished requisition under a new id or URL, so match archived rows on company and title as well as on URL. Do not ask why a lead was archived, do not offer to log it as an application, and do not report dismissal counts or rates in daily summaries.
 
 ## Hand Off to User
 
