@@ -122,6 +122,7 @@ Default skip when:
 - The title, role family, or level violates the user's must-skip rules.
 - The role title is Forward Deployed Engineer or Forward Deploy Engineer.
 - The job title explicitly says "C++".
+- The body makes C++ a mandatory requirement, such as "must be proficient in C++" or C++ as a required qualification on its own. Confirmed by the user on 2026-09-13: a body that lists C++ as one option among several acceptable languages, such as "one or more of Python, Java, C++", is not a skip. This closes the question open since 2026-08-21 on Five Rings and Cadence.
 - The posting states a Master's or a PhD as the minimum required degree. Confirmed by the user on 2026-09-06 that the candidate completes a Bachelor's. "PhD" in a title is a skip only when the degree is actually required. An advanced degree that is preferred, listed as one acceptable option among several, or named as a plus is not a skip, and a predoc or research role aimed at people who intend to apply to a PhD later is not a skip.
 - The role is Product Manager, Associate Product Manager, or any Product Management role.
 - The title or level indicates SDE II, Software Engineer II, Software Development Engineer II, level 2, mid-level, senior, staff, principal, lead, manager, architect, or other non-new-grad seniority. Academic Research Engineering titles are exempt: Technical Associate, Research Associate, and Research Specialist are not seniority markers.

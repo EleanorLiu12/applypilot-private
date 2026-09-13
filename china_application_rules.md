@@ -46,6 +46,9 @@ a US role and belongs on the US track, not here.
 - Titles: 软件工程师, 软件开发工程师, 算法工程师, 机器学习工程师, 人工智能工程师, 大模型工程师,
   应用算法工程师, and the English equivalents used by 外企 (Software Engineer, SDE, AI/ML Engineer,
   Applied Scientist at entry level, LLM Engineer, Agent Engineer).
+- Test direction counts. Confirmed by the user on 2026-09-13: 软件测试 / 测试开发 / QA / SDET titles at
+  应届 level are in the Software Engineering family on this track, prompted by NXP 2027Y Campus Linux
+  Software Test Engineer. The other skip rules (degree, seniority, 外包) still apply to them.
 - Level: 应届生, 校招, 管培生 (technical only), 新毕业生, entry level, Level I, University Graduate,
   Campus Hire, 2027届. Junior only.
 - Graduation window: December 2026 through May 2027, unchanged. In 校招 terms this straddles 2026届
@@ -64,7 +67,8 @@ a US role and belongs on the US track, not here.
 - The company is a Chinese domestic company rather than a 外企 (see Scope).
 - The role is based outside mainland China.
 - The title, role family, or level violates the shared must-skip rules: Product Manager, titles that
-  explicitly say C++, titles including PhD or postings explicitly targeting PhD candidates, Forward
+  explicitly say C++, bodies that make C++ a mandatory requirement (confirmed by the user on 2026-09-13;
+  C++ listed as one of several acceptable languages is not a skip), titles including PhD or postings explicitly targeting PhD candidates, Forward
   Deployed Engineer, and any 社招 / mid-level / senior / staff / principal / lead / manager / architect
   seniority. 社招 (experienced hire) is the China-track equivalent of the US seniority skip.
 - The posting explicitly requires a graduation date wholly outside December 2026 through May 2027.
