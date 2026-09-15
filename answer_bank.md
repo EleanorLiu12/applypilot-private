@@ -20,9 +20,9 @@ When to ask: Ask if the form wording differs from basic US work authorization, a
 
 ## Sponsorship
 
-Default answer: If the form asks "will you now or in the future require employer visa sponsorship?", answer "Yes."
+Default answer: If the form asks "will you now or in the future require employer visa sponsorship?", answer "No." Changed by the user on 2026-09-15: the candidate works on F-1 OPT and the 24-month STEM OPT extension, does not need H-1B sponsorship, and plans to return to China after about three years. Where free text is allowed, add "F-1 OPT with STEM OPT eligibility; no H-1B sponsorship needed."
 
-When to ask: Ask if the form asks only whether sponsorship is required "now", asks for visa category details beyond F-1/OPT/STEM OPT, or presents wording that differs from "now or in the future."
+When to ask: Ask if the form asks for visa category details beyond F-1 OPT and STEM OPT, asks whether the employer would need to sign a Form I-983 training plan or use E-Verify, or presents wording that could be read as covering the STEM OPT extension itself.
 
 ## Location
 

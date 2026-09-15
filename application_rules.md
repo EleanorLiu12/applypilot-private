@@ -36,7 +36,7 @@ Apply quickly when a job matches:
 - Company types: TBD.
 - Industries: TBD.
 - Compensation: at least 90,000 USD per year when salary is explicitly listed. Confirmed by the user on 2026-08-28, replacing the previous 120,000 USD floor. Academic Research Engineering roles use a 60,000 USD floor, confirmed 2026-09-06.
-- Work authorization: must support US work authorization under F-1 OPT/STEM OPT and future employer sponsorship.
+- Work authorization: F-1 OPT, then the 24-month STEM OPT extension. No H-1B or other employer visa sponsorship is needed. Confirmed by the user on 2026-09-15: the candidate plans to work in the US for about three years on OPT and STEM OPT and then return to China. A posting must accept F-1 OPT and STEM OPT; whether the employer sponsors visas does not matter.
 - Form length: low-friction forms in Volume mode.
 
 ## Academic Research Engineering
@@ -89,7 +89,7 @@ Academic pages go stale while still showing a form. Before recording a lead, con
 
 - State availability explicitly. Write "Available January 2027" in the application and in any interest form or email, since these postings usually carry a flexible or already-passed start date rather than a fixed cohort date.
 - Where a stated minimum exceeds the candidate's direct experience, lead with the equivalent-experience clause when the employer publishes one.
-- Sponsorship: most academic research appointments do not sponsor. On this family only, that is not a skip: the user confirmed on 2026-09-06 that a university role is worth taking on OPT alone. The E-Verify question still decides whether the STEM OPT extension is usable, so record it as the next action rather than assuming it. The same sentence on a company posting stays a skip.
+- Sponsorship: most academic research appointments do not sponsor. That is not a skip on any family since 2026-09-15, when the user confirmed the candidate needs only OPT and STEM OPT. The E-Verify question still decides whether the STEM OPT extension is usable, so record it as the next action rather than assuming it.
 
 ### Sources
 
@@ -105,7 +105,7 @@ Sweep these in addition to the boards in the Account Policy section:
 Review before applying when:
 
 - The role is a stretch but close to the candidate story.
-- An Academic Research Engineering posting states that the employer does not sponsor visas but does not exclude OPT or STEM OPT. This applies to universities and research institutions only; the same sentence on a company posting is a skip.
+- A posting, company or academic, states that the employer does not sponsor visas but does not exclude F-1 OPT or STEM OPT. Record "confirm E-Verify enrollment" as the next action, since E-Verify decides whether the 24-month STEM OPT extension is usable. Widened by the user on 2026-09-15 from universities only to every posting.
 - An Academic Research Engineering posting states a minimum of up to three years of experience.
 - An Academic Research Engineering posting lists a minimum qualification the candidate does not hold, such as a specific simulator or toolchain, while the rest of the description matches.
 - Location, relocation, compensation, or seniority is ambiguous.
@@ -131,7 +131,7 @@ Default skip when:
 - Until 2027-01-01, the company is TikTok or ByteDance.
 - The required years of experience are clearly too high for the target level. On Academic Research Engineering roles the bar is three years: at or under it the posting is a Consider under the equivalent-experience clause, above it a skip.
 - The posting says it does not accept F-1 OPT or STEM OPT, requires permanent or unrestricted US work authorization, or otherwise contradicts the confirmed work authorization facts in `candidate_profile.json`.
-- The posting states that the employer does not provide visa sponsorship, cannot sponsor now or in the future, or will not transfer or take over a visa. This remains a skip for companies. Narrowed by the user on 2026-09-06 to one exception: on Academic Research Engineering roles at universities and research institutions, a no-sponsorship statement is a Consider rather than a skip, because OPT authorizes the start of employment without any employer sponsorship and these roles are worth taking on OPT alone. On those roles, record "confirm E-Verify enrollment" as the next action, since E-Verify decides whether the 24-month STEM OPT extension is usable, and note the three-year horizon absent a later sponsor. The company-side rule is deliberately unchanged even though work authorization is the largest single source of loss in the run, because a company role that cannot ever sponsor has no path past OPT.
+- A plain no-sponsorship statement is not a skip. Changed by the user on 2026-09-15, replacing the company skip in force since 2026-07-14 and the university-only exception of 2026-09-06: the candidate works on F-1 OPT and the STEM OPT extension, needs no H-1B or other employer visa sponsorship, and plans to return to China after about three years. "Does not sponsor", "cannot sponsor now or in the future", and "will not transfer or take over a visa" all pass. Still a skip: excluding F-1, OPT, or STEM OPT by name, requiring permanent or unrestricted authorization or citizenship (the line above), refusing applicants who need an employment authorization document, and roles that need an export license the employer will not obtain. The American Express and Siemens exclusions made on no-sponsorship grounds on 2026-09-02 stay in force at the user's instruction.
 - The posting requires US citizenship, US person status, green card, permanent residency, or other citizenship-based eligibility the candidate does not have.
 - The role is in space, aerospace, aircraft, defense, military, or security-clearance-related work.
 - The role requires US security clearance.
@@ -147,11 +147,11 @@ Default skip when:
 Stop and ask the user when:
 
 - Legal, identity, work authorization, sponsorship, or compensation wording is unclear.
-- An Academic Research Engineering posting is otherwise a good match, states no sponsorship, and its E-Verify status cannot be determined from public sources, since that decides whether the STEM OPT extension is usable.
+- A posting is otherwise a good match, states no sponsorship, and its E-Verify status cannot be determined from public sources, since that decides whether the STEM OPT extension is usable.
 - A posting's start date has already passed or is stated as a year rather than a date, and the January 2027 availability needs to be raised with the employer.
 - A form requires an exact graduation month or date instead of accepting the confirmed December 2026 through May 2027 window.
 - A posting's sponsorship, authorization, relocation, or compensation requirement conflicts with a `TBD` profile field.
-- A form asks only whether sponsorship is required "now" and does not also ask about future sponsorship.
+- A form asks about visa category details beyond F-1 OPT and STEM OPT, or asks whether the employer would need to sign a STEM OPT Form I-983 training plan or use E-Verify.
 - A compensation field requires a number or range and does not allow deferral.
 - CAPTCHA, hCaptcha, reCAPTCHA, Cloudflare, login, password, 2FA, account switching, anti-bot, payment, or permission prompts appear.
 - Resume upload cannot be verified.

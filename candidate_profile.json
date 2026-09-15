@@ -34,13 +34,15 @@
   "work_authorization": {
     "country": "United States",
     "current_authorization": "F-1 student status; authorized to work in the United States through OPT and eligible for the 3-year STEM OPT extension.",
-    "requires_sponsorship": true,
-    "requires_sponsorship_now": null,
-    "requires_sponsorship_in_future": true,
-    "answer_exactly_as": "Authorized to work in the United States: Yes. Will require employer visa sponsorship now or in the future: Yes.",
-    "notes_for_unclear_forms": "If a form separates 'requires sponsorship now' from 'requires sponsorship in the future', ask the user before answering the 'now' question. If the form asks 'now or in the future', answer Yes.",
-    "no_sponsorship_posting_policy": "Narrowed by the user on 2026-09-06, same day it was first widened. A company posting that states no visa sponsorship stays an automatic skip, as it was from 2026-07-14. The single exception is Academic Research Engineering roles at universities and research institutions: there a no-sponsorship statement is a Consider, not a skip, because F-1 OPT authorizes the start of employment without any employer sponsorship and the user confirmed such a role is worth taking on OPT alone. On those roles record 'confirm E-Verify enrollment' as the next action, since E-Verify decides whether the 24-month STEM OPT extension is usable, and note the three-year horizon absent a later sponsor. Unchanged and still a skip everywhere: postings that exclude F-1 OPT or STEM OPT by name, require permanent or unrestricted US work authorization, or require citizenship, US person status, or clearance. Consequence held deliberately: the company-side skips from earlier fetches, and the American Express and Siemens company exclusions made on 2026-09-02 on no-sponsorship grounds, all stand.",
-    "no_sponsorship_posting_policy_confirmed_on": "2026-09-06"
+    "requires_sponsorship": false,
+    "requires_sponsorship_now": false,
+    "requires_sponsorship_in_future": false,
+    "answer_exactly_as": "Authorized to work in the United States: Yes. Will require employer visa sponsorship now or in the future: No.",
+    "notes_for_unclear_forms": "Answer No to sponsorship questions whether they ask about now, the future, or now or in the future. Where free text is allowed, add: 'F-1 OPT with STEM OPT eligibility; no H-1B sponsorship needed.' Ask the user before answering a question about visa category details beyond F-1 OPT and STEM OPT, or about whether the employer would need to sign a Form I-983 or use E-Verify.",
+    "no_sponsorship_posting_policy": "Changed by the user on 2026-09-15. A posting that states the employer does not sponsor visas is no longer a skip on any family, company or academic. Record 'confirm E-Verify enrollment' as the next action, since E-Verify decides whether the 24-month STEM OPT extension is usable. Still a skip: postings that exclude F-1, OPT, or STEM OPT by name, require permanent or unrestricted US work authorization, require citizenship, US person status, or clearance, refuse applicants who need an employment authorization document, or need an export license the employer will not obtain. The American Express and Siemens exclusions made on no-sponsorship grounds on 2026-09-02 stay in force at the user's instruction. This replaces the 2026-09-06 policy, under which company no-sponsorship postings were skipped because they offered no path past the OPT horizon; that reasoning no longer applies.",
+    "no_sponsorship_posting_policy_confirmed_on": "2026-09-15",
+    "us_work_plan": "Work in the US for about three years on F-1 OPT plus the STEM OPT extension, then return to China. No H-1B or green card through an employer is planned. Confirmed by the user on 2026-09-15.",
+    "stem_opt_extension_requirements": "The employer must be enrolled in E-Verify and sign a Form I-983 training plan, and the role must be directly related to the STEM degree. Without E-Verify, only the initial 12-month OPT period is usable."
   },
   "targets": {
     "primary_role_families": [
