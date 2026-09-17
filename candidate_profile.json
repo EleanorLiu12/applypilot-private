@@ -42,7 +42,9 @@
     "no_sponsorship_posting_policy": "Changed by the user on 2026-09-15. A posting that states the employer does not sponsor visas is no longer a skip on any family, company or academic. Record 'confirm E-Verify enrollment' as the next action, since E-Verify decides whether the 24-month STEM OPT extension is usable. Still a skip: postings that exclude F-1, OPT, or STEM OPT by name, require permanent or unrestricted US work authorization, require citizenship, US person status, or clearance, refuse applicants who need an employment authorization document, or need an export license the employer will not obtain. The American Express and Siemens exclusions made on no-sponsorship grounds on 2026-09-02 stay in force at the user's instruction. This replaces the 2026-09-06 policy, under which company no-sponsorship postings were skipped because they offered no path past the OPT horizon; that reasoning no longer applies.",
     "no_sponsorship_posting_policy_confirmed_on": "2026-09-15",
     "us_work_plan": "Work in the US for about three years on F-1 OPT plus the STEM OPT extension, then return to China. No H-1B or green card through an employer is planned. Confirmed by the user on 2026-09-15.",
-    "stem_opt_extension_requirements": "The employer must be enrolled in E-Verify and sign a Form I-983 training plan, and the role must be directly related to the STEM degree. Without E-Verify, only the initial 12-month OPT period is usable."
+    "stem_opt_extension_requirements": "The employer must be enrolled in E-Verify and sign a Form I-983 training plan, and the role must be directly related to the STEM degree. Without E-Verify, only the initial 12-month OPT period is usable.",
+    "e_verify_policy": "Required by the user on 2026-09-16: confirm whether the employer is enrolled in E-Verify before applying to any US posting, and record the finding as 'E-Verify: enrolled', 'E-Verify: not enrolled', or 'E-Verify: unconfirmed' with its source and date. E-Verify enrollment is what makes the 24-month STEM OPT extension usable, so an employer outside it caps the role at the first 12 months of OPT. Not enrolled is a handoff to the user, not an automatic skip; unconfirmed means do not apply yet. Sources in order: the posting body, the employer's careers or legal pages, the official employer search at https://www.e-verify.gov/e-verify-employer-search, and the published E-Verify employer dataset.",
+    "e_verify_policy_confirmed_on": "2026-09-16"
   },
   "targets": {
     "primary_role_families": [
@@ -213,13 +215,13 @@
     "academic_research_location_policy": "Confirmed by the user on 2026-09-06: the location policy and its tiers do not apply to Academic Research Engineering roles. Any US location is acceptable on this family, and leads are ranked by research fit and lab strength rather than by tier. The tiers were written for company jobs; applying them here would have excluded CMU in Pittsburgh, Michigan in Ann Arbor, Cornell in Ithaca, UIUC in Urbana, and Princeton, which is most of the strongest ML research in the country, for a family whose purpose is a research record ahead of a PhD application. Non-US locations stay out of scope on the US track."
   },
   "compensation": {
-    "base_salary_range": "At least 90,000 USD per year",
-    "minimum_base_salary_usd_per_year": 90000,
+    "base_salary_range": "No floor; compensation is not a screening criterion on the US track.",
+    "minimum_base_salary_usd_per_year": null,
     "total_compensation_range": "",
-    "answer_strategy": "For lead screening, skip a role only when its entire explicitly listed annual base salary range sits below 90,000 USD; a range that straddles 90,000 USD is acceptable. If compensation is not listed or is ambiguous, do not skip solely for compensation. For application forms, defer when allowed; otherwise ask before entering a required compensation field.",
-    "notes": "User set the floor at 90,000 USD on 2026-08-28, replacing the 120,000 USD floor used from 2026-07-14. This settled the straddling-salary question that had been open since 2026-08-18.",
-    "academic_research_minimum_base_salary_usd_per_year": 60000,
-    "academic_research_compensation_policy": "Confirmed by the user on 2026-09-06: Academic Research Engineering roles use a 60,000 USD floor instead of the 90,000 USD industry floor, because academic pay bands sit far below industry. MIT MLPDS at 79,050-106,420 USD clears either floor; most predoc and RA postings clear only the academic one, and MIT FutureTech's Junior Research Scientist at 50,000 USD clears neither. Academic postings frequently omit salary entirely, which is not a skip."
+    "answer_strategy": "For lead screening, never skip on compensation: the US salary limit was removed by the user on 2026-09-16. Record the listed pay in the notes when the posting states it, since it still helps rank clean matches. For application forms, defer when allowed; otherwise ask before entering a required compensation field.",
+    "notes": "Floor history: 120,000 USD from 2026-07-14, lowered to 90,000 USD on 2026-08-28, removed entirely on 2026-09-16 at the user's instruction (\"以后美国岗位工资限制取消\"). Removing it also voids the straddling-range question of 2026-08-18 and the band-ceiling-exactly-at-the-floor question raised on Climavision on 2026-09-03, both of which were screening questions only.",
+    "academic_research_minimum_base_salary_usd_per_year": null,
+    "academic_research_compensation_policy": "Superseded on 2026-09-16 along with the industry floor: Academic Research Engineering roles have no salary floor either. The 60,000 USD academic floor, confirmed 2026-09-06, existed because academic bands sit below industry pay; with no floor anywhere on the US track the distinction is gone. Academic postings frequently omit salary entirely, which was never a skip."
   },
   "resume_files": [
     {

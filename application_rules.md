@@ -35,8 +35,8 @@ Apply quickly when a job matches:
 - Remote/hybrid/onsite: accept all.
 - Company types: TBD.
 - Industries: TBD.
-- Compensation: at least 90,000 USD per year when salary is explicitly listed. Confirmed by the user on 2026-08-28, replacing the previous 120,000 USD floor. Academic Research Engineering roles use a 60,000 USD floor, confirmed 2026-09-06.
-- Work authorization: F-1 OPT, then the 24-month STEM OPT extension. No H-1B or other employer visa sponsorship is needed. Confirmed by the user on 2026-09-15: the candidate plans to work in the US for about three years on OPT and STEM OPT and then return to China. A posting must accept F-1 OPT and STEM OPT; whether the employer sponsors visas does not matter.
+- Compensation: no floor. Confirmed by the user on 2026-09-16: the US salary limit is removed, so a posting is never skipped on pay, whatever it lists. This replaces the 90,000 USD floor set on 2026-08-28 and the 120,000 USD floor used from 2026-07-14, and it also removes the separate 60,000 USD academic floor. Keep recording listed pay in the notes, since it still helps rank one clean match against another. The China track keeps its own 250,000 RMB floor.
+- Work authorization: F-1 OPT, then the 24-month STEM OPT extension. No H-1B or other employer visa sponsorship is needed. Confirmed by the user on 2026-09-15: the candidate plans to work in the US for about three years on OPT and STEM OPT and then return to China. A posting must accept F-1 OPT and STEM OPT; whether the employer sponsors visas does not matter. E-Verify enrollment does matter and must be confirmed before applying — see the E-Verify Check section.
 - Form length: low-friction forms in Volume mode.
 
 ## Academic Research Engineering
@@ -70,7 +70,7 @@ Skip when the body is central IT, administrative or enterprise systems, a depart
 
 These override the general rules below:
 
-- Compensation floor is 60,000 USD per year, not 90,000. Confirmed by the user on 2026-09-06. Academic pay bands sit far under industry: MIT's MLPDS role at 79,050-106,420 USD clears either floor, but most predoc and RA postings do not clear 90,000 USD. Salary is often not listed at all in academic postings, which is not a skip.
+- Compensation floor: none, the same as the rest of the US track since 2026-09-16. Academic pay bands sit far below industry, from MIT MLPDS at 79,050-106,420 USD down to MIT FutureTech's Junior Research Scientist at 50,000 USD, and none of that is a screening question any more. Salary is often not listed at all in academic postings, which was never a skip.
 - A fixed-term full-time salaried appointment, such as a one-year term renewable subject to grant funding, is a normal academic structure. It is not a contract, agency, or part-time role and is not skipped on job type.
 - A stated minimum of up to three years of experience is a Consider, not a skip. MIT states that it "considers equivalent combinations of experience and education for certain jobs" and encourages such candidates to apply. Tally the candidate's internships, research, and project engineering time toward the stated minimum and say so in the application. Above three years, skip.
 - Level wording does not apply. These postings rarely say new grad, entry level, or level I. Screen on the minimum degree and the stated qualifications instead.
@@ -99,6 +99,36 @@ Sweep these in addition to the boards in the Account Policy section:
 - University career portals for Stanford, Berkeley and the UC system, CMU, Harvard, Princeton, Yale, Columbia, NYU, UW, Michigan, Cornell, UIUC, UCSD, Georgia Tech, and UT Austin. All of these are in scope regardless of city, since the Location Policy does not apply to this family.
 - Aggregators: HigherEdJobs, predoc.org, Academic Jobs Online, and lab or center opportunity pages linked from faculty group sites.
 - National labs are in scope only where the industry rules already allow them. Most gate on US citizenship or clearance, which remains a skip.
+
+## E-Verify Check
+
+Required by the user on 2026-09-16: never apply to a US posting before confirming whether the employer is
+enrolled in E-Verify. Record the finding in the row, not just an intention to look.
+
+Why it decides the outcome: OPT carries the first 12 months without any employer involvement, but the
+24-month STEM OPT extension is only available at an E-Verify employer, which must also sign the Form I-983
+training plan. An employer outside E-Verify caps the job at one year.
+
+- Check before applying, and record one of three values in the notes: `E-Verify: enrolled`,
+  `E-Verify: not enrolled`, or `E-Verify: unconfirmed`, each with the source and the date checked.
+- Sources, in order: the posting body, which often states participation outright; the employer's careers
+  or legal pages, including any E-Verify participation poster; then the official E-Verify employer search at
+  https://www.e-verify.gov/e-verify-employer-search, which must be done in a browser.
+- The official search cannot be queried from the command line, established on 2026-09-16: it is a Tableau
+  dashboard whose CSV export returns only the map sheet (State, latitude, longitude, hiring-site counts),
+  URL filter parameters are ignored, every guessed sheet name returns 404, and no bulk employer dataset is
+  published on e-verify.gov or data.gov. Do not spend a run retrying it; queue the lookup as a browser pass.
+- `enrolled`: proceed.
+- `not enrolled`: hand off to the user rather than deciding. The role is legally workable for 12 months on
+  OPT, so it is the user's call whether a one-year horizon is worth it. Do not skip it silently.
+- `unconfirmed`: do not apply yet. Keep the row Pending with `confirm E-Verify` as the next action, or hand
+  it off if the user wants to apply anyway.
+- Federal contractors are a special case: many are enrolled because the FAR E-Verify clause requires it,
+  but that same work often carries citizenship or clearance requirements that skip the row first.
+- This check is separate from the sponsorship question, which was removed as a screen on 2026-09-15. A
+  posting that refuses sponsorship can still be an E-Verify employer, and those are the roles that work best
+  for this candidate.
+
 
 ## Consider
 
@@ -136,7 +166,7 @@ Default skip when:
 - The role is in space, aerospace, aircraft, defense, military, or security-clearance-related work.
 - The role requires US security clearance.
 - The location conflicts with confirmed location or relocation policy. This does not apply to Academic Research Engineering roles, which accept any US location.
-- The entire explicitly listed annual base salary range sits below 90,000 USD. A range that straddles 90,000 USD is not a skip. On Academic Research Engineering roles the floor is 60,000 USD instead, confirmed by the user on 2026-09-06. A missing or unlisted salary is never a skip on either floor.
+- Compensation is never a skip on the US track. The salary limit was removed by the user on 2026-09-16, including the academic floor. A low, single-value, or unlisted figure all pass.
 - The role is part-time, unpaid, contract, agency, internship, or commission-only unless explicitly allowed. A full-time salaried fixed-term academic appointment, such as a one-year term renewable subject to grant funding, is not a contract role and is not skipped on this ground.
 - The form requires video, extensive writing samples, references, or unsupported materials for a weak-fit role.
 - The job is a duplicate, already applied, closed, or stale without exceptional fit.
@@ -147,7 +177,7 @@ Default skip when:
 Stop and ask the user when:
 
 - Legal, identity, work authorization, sponsorship, or compensation wording is unclear.
-- A posting is otherwise a good match, states no sponsorship, and its E-Verify status cannot be determined from public sources, since that decides whether the STEM OPT extension is usable.
+- A posting is otherwise a good match and the employer is not enrolled in E-Verify, or enrollment cannot be determined from any source, since that decides whether the STEM OPT extension is usable and therefore whether the job lasts one year or three.
 - A posting's start date has already passed or is stated as a year rather than a date, and the January 2027 availability needs to be raised with the employer.
 - A form requires an exact graduation month or date instead of accepting the confirmed December 2026 through May 2027 window.
 - A posting's sponsorship, authorization, relocation, or compensation requirement conflicts with a `TBD` profile field.
