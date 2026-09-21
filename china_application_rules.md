@@ -67,8 +67,9 @@ a US role and belongs on the US track, not here.
 - The company is a Chinese domestic company rather than a 外企 (see Scope).
 - The role is based outside mainland China.
 - The title, role family, or level violates the shared must-skip rules: Product Manager, titles that
-  explicitly say C++, bodies that make C++ a mandatory requirement (confirmed by the user on 2026-09-13;
-  C++ listed as one of several acceptable languages is not a skip), titles including PhD or postings explicitly targeting PhD candidates, Forward
+  explicitly say C++, bodies that name C++ alone as a required skill (narrowed by the user on
+  2026-09-21: C++ named alongside any other language is no longer a skip on either track, while "C/C++" is read as
+  one requirement family and still skips), titles including PhD or postings explicitly targeting PhD candidates, Forward
   Deployed Engineer, and any 社招 / mid-level / senior / staff / principal / lead / manager / architect
   seniority. 社招 (experienced hire) is the China-track equivalent of the US seniority skip.
 - The posting explicitly requires a graduation date wholly outside December 2026 through May 2027.
